@@ -1,4 +1,25 @@
+
+/* @import 'reset.css'; */
 :root {
+  --color-blue: hsl(209, 65%, 51%);
+  --color-purple: hsl(281, 65%, 57%);
+  --color-black: hsl(0, 0%, 0%);
+  --color-white: hsl(0, 0%, 100%);
+
+  --gradient-primary: linear-gradient(
+    to bottom,
+    var(--color-blue),
+    var(--color-purple)
+  );
+  font-size: 16px;
+  margin: 2.5vw;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* :root {
   --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
@@ -104,4 +125,4 @@ a {
   html {
     color-scheme: dark;
   }
-}
+} */
