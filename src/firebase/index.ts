@@ -1,10 +1,8 @@
-import { initializeApp, getApps } from "firebase/app";
-import { getAuth } from 'firebase/auth';
-import { getDatabase } from "firebase/database";
+import { initializeApp, getApps, getApp } from "firebase/app";
 // import "firebase/auth";
 // import "firebase/firestore";
 
-const clientCredentials = {
+const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
@@ -14,11 +12,6 @@ const clientCredentials = {
   measureId: process.env.NEXT_PUBLIC_FIREBASE_MEASURE_ID
 };
 
-let app = null;
-if (!getApps().length) {
-  app = initializeApp(clientCredentials);
-}
-const auth = getAuth();
-const database = getDatabase();
+const firebaseApp = (getApps().length > 0) ? getApp() : initializeApp(firebaseConfig);
 
-export { app, auth, database };
+export { firebaseApp };

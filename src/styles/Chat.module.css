@@ -1,0 +1,65 @@
+.main {
+  display: grid;
+  grid-template: min-content 1fr min-content / 30% auto;
+  grid-template-areas: 
+    "contacts contactHeader contactHeader"
+    "contacts messages serverMessages"
+    "contacts messageBox messageBox";
+  height: 100vh;
+  overflow-y: hidden;
+}
+.contacts {
+  grid-area: contacts;
+  border-right: 1px solid var(--color-light-gray);
+}
+.contacts > * {
+  margin-left: 5px;
+}
+.logoImage {
+  margin-left: 5px;
+}
+.contact {
+  margin-left: 0;
+  border-bottom: 1px solid var(--color-light-gray);
+  padding: 5px;
+}
+.contact__first {
+  margin-top: 10px;
+  border-top: 1px solid var(--color-light-gray);
+}
+.contact__header {
+  grid-area: contactHeader;
+  border-bottom: 1px solid var(--color-light-gray);
+}
+.messages {
+  grid-area: messages;
+}
+.serverMessages {
+  grid-area: serverMessages;
+  border-left: 1px solid var(--color-light-gray);
+}
+.messageBox {
+  grid-area: messageBox;
+  /* border-width: 0; */
+  border-top: 1px solid var(--color-light-gray);
+  font-size: 1.2rem;
+
+  display: flex;
+}
+.messageBox_input {
+  flex: max-content;
+  font-size: 1em;
+  font-weight: 200;
+  /* width: 100%; */
+  border-width: 0;
+  padding: 0 5px;
+}
+.messageBox_input:focus {
+  outline: none;
+}
+.messageBox_sendButton {
+  font-size: 1em;
+}
+.search {
+  display: block;
+}

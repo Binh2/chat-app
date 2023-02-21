@@ -60,7 +60,6 @@
 }
 
 .logInButtons {
-
 }
 .logInButtons > * {
   float: right;
@@ -73,6 +72,9 @@
   border-radius: 0.25em;
   padding: 0.25em 0.5em;
   font-size: 1em;
+}
+.logInButton:active {
+  transform: scale(0.95);
 }
 .logInAsGuestButton {
   background: var(--color-white);

@@ -1,13 +1,41 @@
+import { createUserWithEmailAndPassword, getAuth, User } from 'firebase/auth';
+import { SyntheticEvent, useRef, useState } from 'react';
 import styles from './LogInForm.module.css'
 // import OtherLogInMethods from '../OtherLogInMethods'
 
 export default function LogInForm() {
+  const auth = getAuth();
+  const usernameInput = useRef<HTMLInputElement>(null);
+  const passwordInput = useRef<HTMLInputElement>(null);
+  const [ user, setUser ] = useState<User | null>(null);
+  function submit(e: SyntheticEvent) {
+    e.preventDefault();
+    if (usernameInput.current != null && passwordInput.current != null) {
+      const email = usernameInput.current.value;
+      const password = passwordInput.current.value;
+
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          setUser(userCredential.user);
+          console.log(userCredential.user);
+          if (usernameInput.current != null && passwordInput.current != null) {
+            usernameInput.current.value = "";
+            passwordInput.current.value = "";
+          }
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+        });
+    }
+  }
+  
   return (
     <>
-      <form className={styles.form} action="/api/form" method="post">
+      <form className={styles.form} onSubmit={submit}>
         <label className={styles.label} htmlFor="login-username">Username</label>
         <div className={styles.inputContainer}>
-          <input className={styles.input} 
+          <input className={styles.input} ref={usernameInput}
             type="text" id="login-username" name="login_username"
             pattern="[a-zA-Z0-9]{1,15}"
             title="Username must be number (0 to 9) or alphabets (a to z and A to Z)"></input>
@@ -15,7 +43,8 @@ export default function LogInForm() {
         
         <label className={styles.label} htmlFor="login-password">Password</label>
         <div className={styles.inputContainer}>
-          <input className={styles.input} type="password" id="login-password" name="login_password"></input>
+          <input className={styles.input} ref={passwordInput}
+            type="password" id="login-password" name="login_password"></input>
         </div>
         <p className={styles.signUpText}>Don&lsquo;t have an account? {' '}
           <span className={styles.signUpButton}>

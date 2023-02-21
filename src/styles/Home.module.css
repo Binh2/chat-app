@@ -5,6 +5,7 @@
     "logo logo"
     "blob form";
   font-size: 2rem;
+  margin: 2.5vw;
 }
 .logo {
   grid-area: logo;
@@ -29,14 +30,7 @@
 }
 
 
-/* .main {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 6rem;
-  min-height: 100vh;
-}
+/*
 
 .description {
   display: inherit;
