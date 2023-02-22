@@ -1,8 +1,9 @@
 import { getAuth, connectAuthEmulator } from "firebase/auth";
 import { firebaseApp } from "..";
 
+const firebaseAuth = getAuth(firebaseApp)
 function initAuthEmulator() {
-  connectAuthEmulator(getAuth(firebaseApp), "http://localhost:9099");
+  connectAuthEmulator(firebaseAuth, "http://localhost:9099");
 }
 
-export { initAuthEmulator };
+export { firebaseAuth, initAuthEmulator };

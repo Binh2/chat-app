@@ -9,8 +9,9 @@ import { firebaseApp } from "@/firebase";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { Key, useEffect } from "react";
 import { useRef, useState } from "react";
-import { addMessage, getAllMessages, subscribeToMessages } from "@/firebase/firestore";
+import { addMessage, getAllMessages, subscribeToMessages } from "@/firebase/firestore/manage-messages";
 import { DocumentData, QueryDocumentSnapshot } from "firebase/firestore";
+import useFirebaseAuth from "@/firebase/auth/useFirebaseAuth";
 
 export default function Chat() {
   // const [user, loading, error] = useAuthState(getAuth(firebaseApp));
@@ -20,7 +21,9 @@ export default function Chat() {
   const [messages, setMessages] = useState<Array<String>>([]);
   const [serverMessages, setServerMessages] = useState<Array<DocumentData>>([]);
   const messageBox = useRef<HTMLInputElement>(null);
+  const { authUser, loading } = useFirebaseAuth();
 
+  // console.log(authUser);
   useEffect(() => {
     return onAuthStateChanged(getAuth(firebaseApp), function(user) {
       console.log(user);
@@ -36,7 +39,7 @@ export default function Chat() {
     return subscribeToMessages((collection: any) => {
       setServerMessages(collection.docs);
     });
-  });
+  }, []);
 
   function sendMessage(e: any): void {
     e.preventDefault();
@@ -57,6 +60,7 @@ export default function Chat() {
           <Image src={logoImage} alt="App logo" className={styles.logoImage} priority />
 
           <p>{user?.displayName ?? 'null'}</p>
+          { loading ? <p>Loading...</p> : <p>{authUser?.email ?? "null"}</p>}
 
           <form>
             <label htmlFor="search-by-drop-down">Search by</label>

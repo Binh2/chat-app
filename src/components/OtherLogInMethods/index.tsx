@@ -9,7 +9,7 @@ initAuthEmulator();
 
 // Configure FirebaseUI.
 const uiConfig = {
-  signInSuccessUrl: "/",
+  signInSuccessUrl: "/chat",
   signInOptions: [GithubAuthProvider.PROVIDER_ID],
   signInFlow: "popup",
 };

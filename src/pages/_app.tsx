@@ -2,6 +2,14 @@ import '@/styles/reset.css'
 import '@/styles/global.css'
 import type { AppProps } from 'next/app'
 import { Inter } from '@next/font/google'
+import { AuthUserProvider } from '@/firebase/auth/firebaseAuthContext'
+import { initFirebaseApp } from '@/firebase'
+import { initAuthEmulator } from '@/firebase/auth'
+import { initFirestoreEmulator } from '@/firebase/firestore'
+
+initFirebaseApp();
+initAuthEmulator();
+initFirestoreEmulator();
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -15,6 +23,6 @@ export default function App({ Component, pageProps }: AppProps) {
         font-family: ${inter.style.fontFamily};
       }
     `}</style>
-    <Component {...pageProps} />
+    <AuthUserProvider><Component {...pageProps} /></AuthUserProvider>
   </>);
 }

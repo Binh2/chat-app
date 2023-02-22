@@ -1,4 +1,5 @@
 import { createUserWithEmailAndPassword, getAuth, User } from 'firebase/auth';
+import { useRouter } from 'next/router';
 import { SyntheticEvent, useRef, useState } from 'react';
 import styles from './LogInForm.module.css'
 // import OtherLogInMethods from '../OtherLogInMethods'
@@ -8,12 +9,14 @@ export default function LogInForm() {
   const usernameInput = useRef<HTMLInputElement>(null);
   const passwordInput = useRef<HTMLInputElement>(null);
   const [ user, setUser ] = useState<User | null>(null);
+  const router = useRouter();
   function submit(e: SyntheticEvent) {
     e.preventDefault();
     if (usernameInput.current != null && passwordInput.current != null) {
       const email = usernameInput.current.value;
       const password = passwordInput.current.value;
-
+      
+      console.log("hello");
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           setUser(userCredential.user);
@@ -22,10 +25,12 @@ export default function LogInForm() {
             usernameInput.current.value = "";
             passwordInput.current.value = "";
           }
+          router.push("/chat");
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
+          console.log(error.code);
+          console.log(error.message);
+          console.log("hello2");
         });
     }
   }
@@ -37,7 +42,7 @@ export default function LogInForm() {
         <div className={styles.inputContainer}>
           <input className={styles.input} ref={usernameInput}
             type="text" id="login-username" name="login_username"
-            pattern="[a-zA-Z0-9]{1,15}"
+            // pattern="[a-zA-Z0-9]{1,15}"
             title="Username must be number (0 to 9) or alphabets (a to z and A to Z)"></input>
         </div>
         
