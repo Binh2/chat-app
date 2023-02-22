@@ -12,24 +12,17 @@ import { useRef, useState } from "react";
 import { addMessage, getAllMessages, subscribeToMessages } from "@/firebase/firestore/manage-messages";
 import { DocumentData, QueryDocumentSnapshot } from "firebase/firestore";
 import useFirebaseAuth from "@/firebase/auth/useFirebaseAuth";
+import Link from "next/link";
 
 export default function Chat() {
   // const [user, loading, error] = useAuthState(getAuth(firebaseApp));
   // console.log("Loading:", loading, "|", "Current user:", user);
   // console.log(getAuth());
-  const [user, setUser] = useState<User | null>(null);
   const [messages, setMessages] = useState<Array<String>>([]);
   const [serverMessages, setServerMessages] = useState<Array<DocumentData>>([]);
   const messageBox = useRef<HTMLInputElement>(null);
-  const { authUser, loading } = useFirebaseAuth();
+  const { user, loading } = useFirebaseAuth();
 
-  // console.log(authUser);
-  useEffect(() => {
-    return onAuthStateChanged(getAuth(firebaseApp), function(user) {
-      console.log(user);
-      setUser(user);
-    });
-  })
   useEffect(() => {
     getAllMessages().then((docs: Array<DocumentData>) => {
       setServerMessages(docs);
@@ -57,10 +50,11 @@ export default function Chat() {
       </Head>
       <main className={styles.main}>
         <div className={styles.contacts}>
-          <Image src={logoImage} alt="App logo" className={styles.logoImage} priority />
+          <Link href="/">
+            <Image src={logoImage} alt="App logo" className={styles.logoImage} priority />
+          </Link>
 
-          <p>{user?.displayName ?? 'null'}</p>
-          { loading ? <p>Loading...</p> : <p>{authUser?.email ?? "null"}</p>}
+          { loading ? <p>Loading...</p> : <p>{user?.email ?? "null"}</p>}
 
           <form>
             <label htmlFor="search-by-drop-down">Search by</label>
