@@ -15,7 +15,7 @@ export function UserFinder() {
           onChange={(event) => setSearchField(event.target.value)}>
           <option value="uid">User ID</option>
           <option value="name">Name</option>
-          <option value="all" selected>All</option>
+          <option value="all">All</option>
           {/* <option value="gender">Gender</option> */}
           {/* <option value="age">Age</option> */}
           {/* <option value="email">Email</option> */}
