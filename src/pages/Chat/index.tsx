@@ -19,7 +19,7 @@ export default function Chat() {
   const [serverMessages, setServerMessages] = useState<Array<DocumentData>>([]);
   const messageBox = useRef<HTMLInputElement>(null);
   const { user, loading } = useFirebaseAuth();
-  const { firestoreUsers, firestoreUsersLoading, addUserToFirestore } = useFirestoreUser({ searchField: "", searchText: ""});
+  const { firestoreUsers, firestoreUsersLoading, addUserToFirestore } = useFirestoreUser("", "");
 
   useEffect(() => {
     return subscribeToMessages((collection: QuerySnapshot<DocumentData>) => {
@@ -70,7 +70,7 @@ export default function Chat() {
             <p>Mary Doe</p>
             <p>Hi</p>
           </div> */}
-          <Users users={firestoreUsers ?? null} loading={firestoreUsersLoading}></Users>
+          <Users></Users>
         </div>
 
         <div className={styles.contact__header}>

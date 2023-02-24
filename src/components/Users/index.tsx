@@ -9,11 +9,12 @@ import { useFirestoreUser } from "./useFirestoreUser";
 
 export default function Users(props: { searchText?: string, searchField?: string}) {
   const message = "hello";
-  const { firestoreUsers, firestoreUsersLoading } = useFirestoreUser();
+  const { firestoreUsers, firestoreUsersLoading } = useFirestoreUser(props.searchField, props.searchText);
   return (
     <>
       <ul>
         {firestoreUsers.map((firestoreUser, index) => (<li key={index} className={styles.user}>
+          <div className={styles.user_uid}>{firestoreUser.uid}</div>
           {
             firestoreUser.photoURL ? 
             <Image src={ firestoreUser.photoURL } alt="Profile pic" className={styles.user_pic}></Image> :

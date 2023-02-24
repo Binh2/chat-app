@@ -6,7 +6,7 @@ import { firebaseApp } from '@/firebase';
 import { getAuth } from 'firebase/auth';
 
 const userCollectionRef = collection(firebaseDb, "users");
-export function useFirestoreUser(searchText: string = "", searchField: string = "") {
+export function useFirestoreUser(searchField: string = "", searchText: string = "") {
   const [ firestoreUsers, setFirestoreUsers ] = useState<Array<FirestoreUser>>([]);
   const [ loading, setLoading ] = useState(true);
   async function handleSnapshot(collection: QuerySnapshot<DocumentData>) {
@@ -15,14 +15,13 @@ export function useFirestoreUser(searchText: string = "", searchField: string = 
     setLoading(false);
   }
   useEffect(() => {
-    if (searchField == "all") 
-      return onSnapshot(userCollectionRef, handleSnapshot);
-    else if (searchField == "uid")
+    if (searchField == "uid")
       return onSnapshot(query(userCollectionRef, where("uid", "==", searchText)), handleSnapshot);
     else if (searchField == "name") 
       return onSnapshot(query(userCollectionRef, 
-        where("name", ">=", searchText), 
-        where("name", "<=", searchText + '\uf8ff')
+        where("displayName", ">=", searchText), 
+        where("displayName", "<=", searchText + '\uf8ff'),
+        // where("name", "==", searchText)
       ), handleSnapshot);
     else return onSnapshot(userCollectionRef, handleSnapshot);
   }, [ searchText, searchField ]);
