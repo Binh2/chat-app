@@ -1,35 +1,28 @@
+import { DocumentData, QueryDocumentSnapshot, QuerySnapshot } from "firebase/firestore";
 import Head from "next/head";
 import Image from "next/image";
-
-import logoImage from '/public/logo-with-text.svg';
-import styles from '@/styles/Chat.module.css';
-
-// import { useAuthState } from "react-firebase-hooks/auth";
-import { firebaseApp } from "@/firebase";
-import { getAuth, onAuthStateChanged, User } from "firebase/auth";
+import Link from "next/link";
 import { Key, useEffect } from "react";
 import { useRef, useState } from "react";
-import { addMessage, getAllMessages, subscribeToMessages } from "@/firebase/firestore/manage-messages";
-import { DocumentData, QueryDocumentSnapshot } from "firebase/firestore";
+
+import logoImage from '/public/logo-with-text.svg';
+
+import { addMessage, getAllMessages, subscribeToMessages } from "@/components/Messages/useFirestoreMessages";
+import { useFirestoreUser } from "@/components/Users/useFirestoreUser";
+import { UserFinder } from "@/components/Users/UserFinder";
 import useFirebaseAuth from "@/firebase/auth/useFirebaseAuth";
-import Link from "next/link";
+import Users from "@/components/Users";
+import styles from '@/styles/Chat.module.css';
 
 export default function Chat() {
-  // const [user, loading, error] = useAuthState(getAuth(firebaseApp));
-  // console.log("Loading:", loading, "|", "Current user:", user);
-  // console.log(getAuth());
   const [messages, setMessages] = useState<Array<String>>([]);
   const [serverMessages, setServerMessages] = useState<Array<DocumentData>>([]);
   const messageBox = useRef<HTMLInputElement>(null);
   const { user, loading } = useFirebaseAuth();
+  const { firestoreUsers, firestoreUsersLoading, addUserToFirestore } = useFirestoreUser({ searchField: "", searchText: ""});
 
   useEffect(() => {
-    getAllMessages().then((docs: Array<DocumentData>) => {
-      setServerMessages(docs);
-    })
-  }, []);
-  useEffect(() => {
-    return subscribeToMessages((collection: any) => {
+    return subscribeToMessages((collection: QuerySnapshot<DocumentData>) => {
       setServerMessages(collection.docs);
     });
   }, []);
@@ -46,29 +39,26 @@ export default function Chat() {
   return (
     <>
       <Head>
-
       </Head>
       <main className={styles.main}>
         <div className={styles.contacts}>
           <Link href="/">
-            <Image src={logoImage} alt="App logo" className={styles.logoImage} priority />
+            <Image src={logoImage} alt="App logo" className={styles.logoImage} priority={true} />
           </Link>
 
           { loading ? <p>Loading...</p> : <p>{user?.email ?? "null"}</p>}
+          { loading ? <p>Loading...</p> : <p>{user?.uid ?? "null"}</p>}
 
-          <form>
-            <label htmlFor="search-by-drop-down">Search by</label>
-            {' '}
-            <select id="search-by-drop-down" name="search-by">
-              <option value="name">Name</option>
-              <option value="gender">Gender</option>
-              <option value="age">Age</option>
-              <option value="email">Email</option>
-              <option value="phone">Phone number</option>
-            </select>
-            <input className={styles.search} type="text"></input>
-          </form>
-          <div className={`${styles.contact} ${styles.contact__first}`}>
+          <UserFinder></UserFinder>
+
+          <button onClick={() => addUserToFirestore({
+            uid: "123",
+            email: "mary@gmail.com",
+            displayName: "Mary Curie",
+            photoURL: ""
+          })}>Add fake user</button>
+
+          {/* <div className={`${styles.contact} ${styles.contact__first}`}>
             <p>Mary Doe</p>
             <p>Hi</p>
           </div>
@@ -79,7 +69,8 @@ export default function Chat() {
           <div className={styles.contact}>
             <p>Mary Doe</p>
             <p>Hi</p>
-          </div>
+          </div> */}
+          <Users users={firestoreUsers ?? null} loading={firestoreUsersLoading}></Users>
         </div>
 
         <div className={styles.contact__header}>

@@ -59,8 +59,8 @@
   font-weight: 700;
 }
 
-.logInButtons {
-}
+/* .logInButtons {
+} */
 .logInButtons > * {
   float: right;
   clear: right;
