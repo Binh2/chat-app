@@ -1,9 +1,9 @@
 import { DocumentData } from "firebase/firestore"
-import { FirestoreMessage } from "../Messages/MessageType"
+import { MessageType } from "../Messages/MessageType"
 import { FirestoreUser } from "../Users/FirestoreUser"
 
 export type FirestoreGroup = {
-  messages: string[] | FirestoreMessage[],
+  messages: string[] | MessageType[],
   group: string[] | FirestoreUser[],
 }
 export function documentDataToFirestoreGroup(doc: DocumentData): FirestoreGroup {
