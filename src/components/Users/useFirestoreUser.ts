@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react'
-import { documentDataToFirestoreUser, FirestoreUser } from "./UserType";
-import { firebaseDb } from "../../firebase/firestore"
-import { addDoc, collection, doc, DocumentData, endAt, getDoc, getDocs, onSnapshot, orderBy, query, QuerySnapshot, startAt, where } from 'firebase/firestore';
+import { documentDataToUserType, UserType } from "./UserType";
+import { collection, DocumentData, getFirestore, onSnapshot, query, QuerySnapshot, where } from 'firebase/firestore';
 
-const userCollectionRef = collection(firebaseDb, "users");
+const userCollectionRef = collection(getFirestore(), "users");
 export function useFirestoreUser(searchField: string = "", searchText: string = "") {
-  const [ firestoreUsers, setFirestoreUsers ] = useState<Array<FirestoreUser>>([]);
+  const [ firestoreUsers, setFirestoreUsers ] = useState<Array<UserType>>([]);
   const [ loading, setLoading ] = useState(true);
   async function handleSnapshot(collection: QuerySnapshot<DocumentData>) {
     setLoading(true);
-    await setFirestoreUsers(collection.docs.map(doc => documentDataToFirestoreUser(doc.data())));
+    await setFirestoreUsers(collection.docs.map(doc => documentDataToUserType(doc.data())));
     setLoading(false);
   }
   useEffect(() => {
@@ -25,42 +24,9 @@ export function useFirestoreUser(searchField: string = "", searchText: string = 
       ), handleSnapshot);
     else return onSnapshot(userCollectionRef, handleSnapshot);
   }, [ searchText, searchField ]);
-  async function getFirestoreUsersByUid(uid: string) {
-    const querySnapshot = await getDocs(query(userCollectionRef,
-      where("uid", "==", uid)));
-    return querySnapshot.docs.map((doc) => documentDataToFirestoreUser(doc));
-  }
-  async function getFirestoreUsersByName(searchName: string) {
-    const querySnapshot = await getDocs(query(userCollectionRef, 
-      where('displayName', '>=', searchName),
-      where('displayName', '<=', searchName + '\uf8ff')));
-    return querySnapshot.docs.map((doc) => documentDataToFirestoreUser(doc));
-  }
-  async function addUserToFirestore(user: FirestoreUser) {
-    setLoading(true);
-    const docRef = await addDoc(userCollectionRef, {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL
-    });
-    setLoading(false);
-  }
-  async function addUserToFirestoreWithoutDup(user: FirestoreUser) {
-    setLoading(true);
-    const users = await getFirestoreUsersByUid(user.uid);
-    console.log("add user without dup: ");
-    console.log(users);
-    if (users.length == 0)
-      await addUserToFirestore(user);
-    setLoading(false);
-  }
+  
   return {
     firestoreUsers,
     firestoreUsersLoading: loading,
-    addUserToFirestore,
-    addUserToFirestoreWithoutDup,
-    getFirestoreUsersByName,
-    getFirestoreUsersByUid,
   };
 }
