@@ -1,7 +1,7 @@
 import useFirebaseAuth from "@/firebase/auth/useFirebaseAuth";
 import Users from "../Users";
 import { FirestoreUser } from "../Users/UserType";
-import { FirestoreGroup } from "./FirestoreGroup";
+import { FirestoreGroup } from "./FirestoreGroupType";
 import { useFirestoreGroups } from "./useFirestoreGroups"
 
 export function Groups(props: { groups: FirestoreGroup[] }) {

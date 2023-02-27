@@ -3,7 +3,7 @@ import { firebaseDb } from "@/firebase/firestore";
 import { Unsubscribe } from "firebase/auth";
 import { collection, DocumentData, onSnapshot, QuerySnapshot } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { documentDataToFirestoreGroup, FirestoreGroup } from "./FirestoreGroup";
+import { documentDataToFirestoreGroup, FirestoreGroup } from "./FirestoreGroupType";
 
 export function useFirestoreGroups() {
   const [ firestoreGroups, setFirestoreGroups ] = useState<FirestoreGroup[]>([]);
