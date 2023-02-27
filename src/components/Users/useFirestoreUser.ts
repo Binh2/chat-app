@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react'
 import { documentDataToFirestoreUser, FirestoreUser } from "./FirestoreUser";
 import { firebaseDb } from "../../firebase/firestore"
-import { addDoc, collection, doc, DocumentData, onSnapshot, query, QuerySnapshot, where } from 'firebase/firestore';
-import { firebaseApp } from '@/firebase';
-import { getAuth } from 'firebase/auth';
+import { addDoc, collection, doc, DocumentData, endAt, getDoc, getDocs, onSnapshot, orderBy, query, QuerySnapshot, startAt, where } from 'firebase/firestore';
 
 const userCollectionRef = collection(firebaseDb, "users");
 export function useFirestoreUser(searchField: string = "", searchText: string = "") {
@@ -21,10 +19,23 @@ export function useFirestoreUser(searchField: string = "", searchText: string = 
       return onSnapshot(query(userCollectionRef, 
         where("displayName", ">=", searchText), 
         where("displayName", "<=", searchText + '\uf8ff'),
-        // where("name", "==", searchText)
+        // orderBy("displayName"),
+        // startAt(searchText), 
+        // endAt(searchText + '\uf8ff'),
       ), handleSnapshot);
     else return onSnapshot(userCollectionRef, handleSnapshot);
   }, [ searchText, searchField ]);
+  async function getFirestoreUsersByUid(uid: string) {
+    const querySnapshot = await getDocs(query(userCollectionRef,
+      where("uid", "==", uid)));
+    return querySnapshot.docs.map((doc) => documentDataToFirestoreUser(doc));
+  }
+  async function getFirestoreUsersByName(searchName: string) {
+    const querySnapshot = await getDocs(query(userCollectionRef, 
+      where('displayName', '>=', searchName),
+      where('displayName', '<=', searchName + '\uf8ff')));
+    return querySnapshot.docs.map((doc) => documentDataToFirestoreUser(doc));
+  }
   async function addUserToFirestore(user: FirestoreUser) {
     setLoading(true);
     const docRef = await addDoc(userCollectionRef, {
@@ -35,45 +46,21 @@ export function useFirestoreUser(searchField: string = "", searchText: string = 
     });
     setLoading(false);
   }
-  async function addFriendToFirestoreUser(user: FirestoreUser, friendUser: FirestoreUser) {
-    return addDoc(collection(userCollectionRef, "friends"), {
-      uid: friendUser.uid,
-      email: friendUser.email,
-      displayName: friendUser.displayName,
-      photoURL: friendUser.photoURL
-    });
-  }
-  async function addFriendToFirestoreUserBothWay(user: FirestoreUser, friendUser: FirestoreUser) {
-    Promise.all([
-      addFriendToFirestoreUser(user, friendUser), 
-      addFriendToFirestoreUser(friendUser, user)])
-    .then((docRefs) => {
-      docRefs.forEach((docRef) => {
-        console.log("Document written with ID: ", docRef.id);
-      })
-    })
-    .catch((error) => console.error("Error adding document: ", error))
-  }
-  function getUserByUid(uid: String) {
-    return query(userCollectionRef,
-      where("uid", "==", uid));
-  }
-  async function getUserByName(searchName: String) {
-    return query(userCollectionRef, 
-      where('displayName', '>=', searchName),
-      where('displayName', '<=', searchName + '\uf8ff'))
+  async function addUserToFirestoreWithoutDup(user: FirestoreUser) {
+    setLoading(true);
+    const users = await getFirestoreUsersByUid(user.uid);
+    console.log("add user without dup: ");
+    console.log(users);
+    if (users.length == 0)
+      await addUserToFirestore(user);
+    setLoading(false);
   }
   return {
     firestoreUsers,
     firestoreUsersLoading: loading,
     addUserToFirestore,
-    addFriendToFirestoreUserBothWay,
-    getUserByName,
-    getUserByUid,
+    addUserToFirestoreWithoutDup,
+    getFirestoreUsersByName,
+    getFirestoreUsersByUid,
   };
-}
-
-useFirestoreUser.defaultProps = {
-  searchField: "",
-  searchText: ""
 }

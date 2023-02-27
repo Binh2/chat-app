@@ -2,9 +2,9 @@ import { getAuth } from "firebase/auth";
 import { getFirestore, collection, addDoc, getDocs, doc, onSnapshot, query, connectFirestoreEmulator, DocumentData, QuerySnapshot, Timestamp, DocumentReference } from "firebase/firestore";
 import { useState } from "react";
 import { firebaseDb } from "../../firebase/firestore";
-import { FirestoreMessage } from "./FirestoreMessage";
+import { FirestoreMessage } from "./MessageType";
 
-function useFirestoreMessages() {
+export function useFirestoreMessages() {
   const [ messages, setMessages ] = useState<FirestoreMessage[]>([]);
   async function addMessageToFirestore(message: string) {
     return addDoc(collection(firebaseDb, "messages"), { message: message});

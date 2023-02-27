@@ -9,7 +9,7 @@ import logoImage from '/public/logo-with-text.svg';
 
 import { addMessage, getAllMessages, subscribeToMessages } from "@/components/Messages/useFirestoreMessages";
 import { useFirestoreUser } from "@/components/Users/useFirestoreUser";
-import { UserFinder } from "@/components/Users/UserFinder";
+import { UsersFinder } from "@/components/Users/UsersFinder";
 import useFirebaseAuth from "@/firebase/auth/useFirebaseAuth";
 import Users from "@/components/Users";
 import styles from '@/styles/Chat.module.css';
@@ -24,6 +24,9 @@ export default function Chat() {
   useEffect(() => {
     return subscribeToMessages((collection: QuerySnapshot<DocumentData>) => {
       setServerMessages(collection.docs);
+      collection.docs.map((doc) => {
+        console.log(doc.ref.path)
+      })
     });
   }, []);
 
@@ -49,7 +52,7 @@ export default function Chat() {
           { loading ? <p>Loading...</p> : <p>{user?.email ?? "null"}</p>}
           { loading ? <p>Loading...</p> : <p>{user?.uid ?? "null"}</p>}
 
-          <UserFinder></UserFinder>
+          <UsersFinder></UsersFinder>
 
           <button onClick={() => addUserToFirestore({
             uid: "123",
@@ -70,7 +73,7 @@ export default function Chat() {
             <p>Mary Doe</p>
             <p>Hi</p>
           </div> */}
-          <Users></Users>
+          <Users firestoreUsers={firestoreUsers} firestoreUsersLoading={firestoreUsersLoading}></Users>
         </div>
 
         <div className={styles.contact__header}>

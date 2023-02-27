@@ -6,14 +6,16 @@ import styles from "./Users.module.css";
 
 import { FirestoreUser } from "@/components/Users/FirestoreUser";
 import { useFirestoreUser } from "./useFirestoreUser";
+import { useFirestoreGroups } from "../Groups/useFirestoreGroups";
 
-export default function Users(props: { searchText?: string, searchField?: string}) {
+export default function Users(props: { firestoreUsers: FirestoreUser[], firestoreUsersLoading: boolean }) {
   const message = "hello";
-  const { firestoreUsers, firestoreUsersLoading } = useFirestoreUser(props.searchField, props.searchText);
+  const { firestoreGroups, addFirestoreGroup } = useFirestoreGroups();
   return (
     <>
       <ul>
-        {firestoreUsers.map((firestoreUser, index) => (<li key={index} className={styles.user}>
+        {props.firestoreUsers.map((firestoreUser, index) => (<li key={index} className={styles.user} 
+          onClick={(event) => addFirestoreGroup(firestoreUser.uid)}>
           <div className={styles.user_uid}>{firestoreUser.uid}</div>
           {
             firestoreUser.photoURL ? 
@@ -24,7 +26,7 @@ export default function Users(props: { searchText?: string, searchField?: string
           <div className={styles.user_name}>{firestoreUser.displayName}</div>
           <div className={styles.user_message}>{message}</div>
         </li>))}
-        { firestoreUsersLoading && <li >Loading...</li> }
+        { props.firestoreUsersLoading && <li >Loading...</li> }
       </ul>
     </>
   )

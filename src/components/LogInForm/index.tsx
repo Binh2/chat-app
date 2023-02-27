@@ -3,15 +3,15 @@ import { createUserWithEmailAndPassword, getAuth, User, signInAnonymously } from
 import { useRouter } from 'next/router';
 import { SyntheticEvent, useRef, useState } from 'react';
 import { GithubLogIn } from '../GithubLogIn';
+import { FirestoreUser } from '../Users/FirestoreUser';
 import styles from './LogInForm.module.css'
 // import OtherLogInMethods from '../OtherLogInMethods'
 
 export default function LogInForm() {
   const emailInput = useRef<HTMLInputElement>(null);
   const passwordInput = useRef<HTMLInputElement>(null);
-  const [ user, setUser ] = useState<User | null>(null);
   const router = useRouter();
-  const { addNewUserWithEmailAndPassword } = useFirebaseAuth();
+  const { addNewUserWithEmailAndPassword, addNewUserAnonymously } = useFirebaseAuth();
   function logIn(e: SyntheticEvent) {
     e.preventDefault();
     if (emailInput.current != null && passwordInput.current != null) {
@@ -19,23 +19,23 @@ export default function LogInForm() {
       const password = passwordInput.current.value;
       
       addNewUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          setUser(userCredential.user);
-          console.log(userCredential.user);
-          if (emailInput.current != null && passwordInput.current != null) {
-            emailInput.current.value = "";
-            passwordInput.current.value = "";
-          }
-          router.push("/chat");
-        })
-        .catch((error) => {
-          console.log(error.code);
-          console.log(error.message);
-        });
+      .then((userCredential) => {
+        console.log(userCredential.user);
+        if (emailInput.current != null && passwordInput.current != null) {
+          emailInput.current.value = "";
+          passwordInput.current.value = "";
+        }
+        router.push("/chat");
+      })
+      .catch((error) => {
+        console.log(error.code);
+        console.log(error.message);
+      });
     }
   }
-  function logInAsGuest() {
-    signInAnonymously(getAuth());
+  async function logInAsGuest() {
+    // signInAnonymously(getAuth());
+    await addNewUserAnonymously();
     router.push("/chat");
   }
   
