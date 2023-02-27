@@ -1,6 +1,6 @@
 import useFirebaseAuth from "@/firebase/auth/useFirebaseAuth";
 import Users from "../Users";
-import { FirestoreUser } from "../Users/FirestoreUser";
+import { FirestoreUser } from "../Users/UserType";
 import { FirestoreGroup } from "./FirestoreGroup";
 import { useFirestoreGroups } from "./useFirestoreGroups"
 

@@ -3,7 +3,7 @@ import { createUserWithEmailAndPassword, getAuth, User, signInAnonymously } from
 import { useRouter } from 'next/router';
 import { SyntheticEvent, useRef, useState } from 'react';
 import { GithubLogIn } from '../GithubLogIn';
-import { FirestoreUser } from '../Users/FirestoreUser';
+import { FirestoreUser } from '../Users/UserType';
 import styles from './LogInForm.module.css'
 // import OtherLogInMethods from '../OtherLogInMethods'
 

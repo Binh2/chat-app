@@ -4,7 +4,7 @@ import logoImage from '/public/thirteen.svg';
 
 import styles from "./Users.module.css";
 
-import { FirestoreUser } from "@/components/Users/FirestoreUser";
+import { FirestoreUser } from "@/components/Users/UserType";
 import { useFirestoreUser } from "./useFirestoreUser";
 import { useFirestoreGroups } from "../Groups/useFirestoreGroups";
 

@@ -1,7 +1,13 @@
 import { User } from "firebase/auth"
 import { DocumentData } from "firebase/firestore";
 
-export function userToFirestoreUser(user: User) {
+export type UserType = {
+  uid: string,
+  email: string,
+  displayName: string,
+  photoURL: string, 
+}
+export function userToUserType(user: User) {
   return (({uid, email, displayName, photoURL}) => ({
     uid, 
     email: email ?? "", 
@@ -9,12 +15,6 @@ export function userToFirestoreUser(user: User) {
     photoURL: photoURL ?? ""
   }))(user);
 }
-export function documentDataToFirestoreUser(doc: DocumentData) {
+export function documentDataToUserType(doc: DocumentData) {
   return (({uid, email, displayName, photoURL}) => ({uid, email, displayName, photoURL}))(doc);
-}
-export type FirestoreUser = {
-  uid: string,
-  email: string,
-  displayName: string,
-  photoURL: string, 
 }

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { getAuth, User, createUserWithEmailAndPassword, GithubAuthProvider, signInWithPopup, signInAnonymously } from 'firebase/auth';
 
 import { useFirestoreUser } from "@/components/Users/useFirestoreUser";
-import { userToFirestoreUser } from '../../components/Users/FirestoreUser';
+import { userToFirestoreUser } from '../../components/Users/UserType';
 
 export default function useFirebaseAuth() {
   const [ user, setUser ] = useState<User | null>(null);

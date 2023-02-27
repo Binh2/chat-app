@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { documentDataToFirestoreUser, FirestoreUser } from "./FirestoreUser";
+import { documentDataToFirestoreUser, FirestoreUser } from "./UserType";
 import { firebaseDb } from "../../firebase/firestore"
 import { addDoc, collection, doc, DocumentData, endAt, getDoc, getDocs, onSnapshot, orderBy, query, QuerySnapshot, startAt, where } from 'firebase/firestore';
 
