@@ -1,7 +1,7 @@
-import { useFirestoreMessages } from "./useMessages";
+import { useMessages } from "./useMessages";
 
 export function Messages() {
-  const { messages, addMessage } = useFirestoreMessages();
+  const { messages, addMessageToFirestore } = useMessages();
 
   return (
     <>
