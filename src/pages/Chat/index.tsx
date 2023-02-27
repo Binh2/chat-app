@@ -7,7 +7,7 @@ import { useRef, useState } from "react";
 
 import logoImage from '/public/logo-with-text.svg';
 
-import { addMessage, getAllMessages, subscribeToMessages } from "@/components/Messages/useFirestoreMessages";
+import { addMessage, getAllMessages, subscribeToMessages } from "@/components/Messages/useMessages";
 import { useFirestoreUser } from "@/components/Users/useFirestoreUser";
 import { UsersFinder } from "@/components/Users/UsersFinder";
 import useFirebaseAuth from "@/firebase/auth/useFirebaseAuth";
