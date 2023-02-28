@@ -1,9 +1,7 @@
-import useFirebaseAuth from '@/firebase/auth/useFirebaseAuth';
-import { createUserWithEmailAndPassword, getAuth, User, signInAnonymously } from 'firebase/auth';
+import { addNewUserAnonymously, addNewUserWithEmailAndPassword } from '@/firebase/auth/authUserHandlingFunctions';
 import { useRouter } from 'next/router';
 import { SyntheticEvent, useRef, useState } from 'react';
 import { GithubLogIn } from '../GithubLogIn';
-import { FirestoreUser } from '../Users/UserType';
 import styles from './LogInForm.module.css'
 // import OtherLogInMethods from '../OtherLogInMethods'
 
@@ -11,7 +9,6 @@ export default function LogInForm() {
   const emailInput = useRef<HTMLInputElement>(null);
   const passwordInput = useRef<HTMLInputElement>(null);
   const router = useRouter();
-  const { addNewUserWithEmailAndPassword, addNewUserAnonymously } = useFirebaseAuth();
   function logIn(e: SyntheticEvent) {
     e.preventDefault();
     if (emailInput.current != null && passwordInput.current != null) {

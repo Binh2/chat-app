@@ -6,7 +6,6 @@ import logoImage from '/public/logo-with-text.svg';
 import blob from '/public/blob.svg';
 
 import LogInForm from '@/components/LogInForm'
-import OtherLogInMethods from '@/components/OtherLogInMethods';
 
 export default function Home() {
   return (
@@ -32,25 +31,10 @@ export default function Home() {
         </div>
 
         <LogInForm />
-        {/* <OtherLogInMethods /> */}
       </main>
       {/* 
       <main className={styles.main}>
         <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
           <a
             href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
             className={styles.card}

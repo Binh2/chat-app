@@ -5,17 +5,16 @@ import logoImage from '/public/thirteen.svg';
 import styles from "./Users.module.css";
 
 import { UserType } from "@/components/Users/UserType";
-import { useFirestoreUser } from "./useFirestoreUser";
-import { useFirestoreGroups } from "../Groups/useFirestoreGroups";
+import { addGroupToFirestore } from "../Groups/groupHandlingFunctions";
 
 export default function Users(props: { firestoreUsers: UserType[], firestoreUsersLoading: boolean }) {
   const message = "hello";
-  const { firestoreGroups, addFirestoreGroup } = useFirestoreGroups();
+  // const { firestoreGroups, addFirestoreGroup } = useFirestoreGroups();
   return (
     <>
       <ul>
         {props.firestoreUsers.map((firestoreUser, index) => (<li key={index} className={styles.user} 
-          onClick={(event) => addFirestoreGroup(firestoreUser.uid)}>
+          onClick={(event) => addGroupToFirestore(firestoreUser.uid)}>
           <div className={styles.user_uid}>{firestoreUser.uid}</div>
           {
             firestoreUser.photoURL ? 

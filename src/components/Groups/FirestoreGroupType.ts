@@ -1,13 +1,21 @@
-import { DocumentData } from "firebase/firestore"
+import { DocumentData, QueryDocumentSnapshot } from "firebase/firestore"
 
 export type FirestoreGroupType = {
   messages: string[],
-  group: string[],
+  users: string[],
+  id: string
 }
 
-export function documentDataToFirestoreGroup(doc: DocumentData): FirestoreGroupType {
+export function queryDocumentSnapshotToFirestoreGroupType(queryDocumentSnapshot: QueryDocumentSnapshot<DocumentData>) {
+  const documentData = queryDocumentSnapshot.data();
   return {
-    messages: doc.messages,
-    group: doc.group
+    messages: documentData.messages,
+    users: documentData.users,
+    id: queryDocumentSnapshot.id
   }
 }
+// export function documentDataToFirestoreGroup(documentData: DocumentData) {
+//   return {
+//     users: documentData.users
+//   }
+// }

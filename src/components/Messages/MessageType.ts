@@ -6,13 +6,15 @@ export type MessageType = {
   time: Date,
   isReceived: boolean,
   from: string,
+  id: string,
 }
 
-export function toMessageType(data: FirestoreMessageType) {
+export function firestoreMessageTypeToMessageType(firestoreMessageType: FirestoreMessageType) {
   return {
-    message: data.message,
-    time: data.time.toDate(),
-    isReceived: data.isReceived,
-    from: data.from
+    message: firestoreMessageType.message,
+    time: firestoreMessageType.time.toDate(),
+    isReceived: firestoreMessageType.isReceived,
+    from: firestoreMessageType.from,
+    id: firestoreMessageType.id,
   }
 }

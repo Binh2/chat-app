@@ -1,17 +1,19 @@
-import { DocumentData, Timestamp } from "firebase/firestore"
+import { DocumentData, QueryDocumentSnapshot, Timestamp } from "firebase/firestore"
 
 export type FirestoreMessageType = {
   message: string,
   time: Timestamp,
   isReceived: boolean,
   from: string,
+  id: string
 }
 
-export function toFirestoreMessageType(data: DocumentData) {
+export function queryDocumentSnapshotToFirestoreMessageType(queryDocumentSnapshot: QueryDocumentSnapshot<DocumentData>) {
   return {
-    message: data.message,
-    time: data.time,
-    isReceived: data.isReceived,
-    from: data.from
+    message: queryDocumentSnapshot.data.message,
+    time: queryDocumentSnapshot.data.time,
+    isReceived: queryDocumentSnapshot.data.isReceived,
+    from: queryDocumentSnapshot.data.from,
+    id: queryDocumentSnapshot.id
   }
 }

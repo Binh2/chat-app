@@ -1,42 +1,45 @@
-import { DocumentData, QueryDocumentSnapshot, QuerySnapshot } from "firebase/firestore";
+import { collection, DocumentData, getFirestore, onSnapshot, QueryDocumentSnapshot, QuerySnapshot } from "firebase/firestore";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { Key, useEffect } from "react";
+import { Key, SyntheticEvent, useEffect } from "react";
 import { useRef, useState } from "react";
 
 import logoImage from '/public/logo-with-text.svg';
 
-import { addMessage, getAllMessages, subscribeToMessages } from "@/components/Messages/useMessages";
 import { useFirestoreUser } from "@/components/Users/useFirestoreUser";
 import { UsersFinder } from "@/components/Users/UsersFinder";
 import useFirebaseAuth from "@/firebase/auth/useFirebaseAuth";
 import Users from "@/components/Users";
 import styles from '@/styles/Chat.module.css';
+import { addUserToFirestore } from "@/components/Users/userHandlingFunctions";
+import { useGroups } from "@/components/Groups/useGroups";
+import { useMessages } from "@/components/Messages/useMessages";
+import { Messages } from "@/components/Messages";
+import { addMessageToFirestore } from "@/components/Messages/messageHandlingFunctions";
+import { addGroupToFirestore } from "@/components/Groups/groupHandlingFunctions";
+import { Groups } from "@/components/Groups";
 
 export default function Chat() {
-  const [messages, setMessages] = useState<Array<String>>([]);
-  const [serverMessages, setServerMessages] = useState<Array<DocumentData>>([]);
+  const { messages } = useMessages(10);
   const messageBox = useRef<HTMLInputElement>(null);
   const { user, loading } = useFirebaseAuth();
-  const { firestoreUsers, firestoreUsersLoading, addUserToFirestore } = useFirestoreUser("", "");
+  const { firestoreUsers, firestoreUsersLoading } = useFirestoreUser("", "");
+  const { groups } = useGroups();
 
-  useEffect(() => {
-    return subscribeToMessages((collection: QuerySnapshot<DocumentData>) => {
-      setServerMessages(collection.docs);
+  useEffect(() => onSnapshot(collection(getFirestore(), "messages"), 
+    (collection: QuerySnapshot<DocumentData>) => {
       collection.docs.map((doc) => {
-        console.log(doc.ref.path)
-      })
-    });
-  }, []);
-
-  function sendMessage(e: any): void {
-    e.preventDefault();
-    if (messageBox.current != null) {
-      setMessages([...messages, messageBox.current.value]);
-      addMessage(messageBox.current.value);
-      messageBox.current.value = "";
+        console.log(doc.ref.path);
+      });
     }
+  ), []);
+
+  function sendMessage(event: SyntheticEvent) {
+    event.preventDefault();
+    if (messageBox.current == null) return;
+    addMessageToFirestore(messageBox.current.value ?? "");
+    messageBox.current.value = ""
   }
 
   return (
@@ -60,35 +63,15 @@ export default function Chat() {
             displayName: "Mary Curie",
             photoURL: ""
           })}>Add fake user</button>
-
-          {/* <div className={`${styles.contact} ${styles.contact__first}`}>
-            <p>Mary Doe</p>
-            <p>Hi</p>
-          </div>
-          <div className={styles.contact}>
-            <p>Mary Doe</p>
-            <p>Hi</p>
-          </div>
-          <div className={styles.contact}>
-            <p>Mary Doe</p>
-            <p>Hi</p>
-          </div> */}
-          <Users firestoreUsers={firestoreUsers} firestoreUsersLoading={firestoreUsersLoading}></Users>
+          <Users firestoreUsers={firestoreUsers} firestoreUsersLoading={firestoreUsersLoading} ></Users>
+          Groups
+          <Groups groups={groups}></Groups>
         </div>
 
         <div className={styles.contact__header}>
           <p>Mary Doe</p>
         </div>
-        <ol className={styles.messages}>
-          Client-side messages
-          { messages.map((message: String, index: Key) => (<li key={index}>{message}</li>))}
-        </ol>
-        <ol className={styles.serverMessages}>
-          Server-side messages
-          { serverMessages.map((doc) => (<li key={doc.id}>{doc.data().message}</li>)) }
-          {/* { serverMessages.forEach((doc, index) => (<li key={index}>{doc}</li>)) } */}
-          {/* { serverMessages.map((message: String, index: Key) => (<li key={index}>{message}</li>))} */}
-        </ol>
+        <Messages messages={messages}></Messages>
         <form className={styles.messageBox} onSubmit={sendMessage}>
           <input className={styles.messageBox_input} type="text" placeholder="Word your thought"
             ref={messageBox}></input>
