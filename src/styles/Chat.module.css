@@ -11,6 +11,8 @@
 .contacts {
   grid-area: contacts;
   border-right: 1px solid var(--color-light-gray);
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .contacts > * {
   margin-left: 5px;

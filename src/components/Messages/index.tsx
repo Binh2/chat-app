@@ -1,7 +1,6 @@
 import { MessageType } from "./MessageType";
-import { useMessages } from "./useMessages";
 
-export function Messages(props: { messages: MessageType[]}) {
+export function Messages(props: { messages: MessageType[] }) {
   return (
     <>
       <ol>

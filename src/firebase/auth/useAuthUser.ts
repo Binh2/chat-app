@@ -1,20 +1,22 @@
 import { useState, useEffect } from 'react'
 import { getAuth, User } from 'firebase/auth';
+import { useRouter } from 'next/router';
 
-export default function useFirebaseAuth() {
-  const [ user, setUser ] = useState<User | null>(null);
+export default function useAuthUser() {
+  const [ authUser, setAuthUser ] = useState<User | null>(null);
   const [ loading, setLoading ] = useState(true);
-  // const { addUserToFirestore, addUserToFirestoreWithoutDup } = useFirestoreUser();
+  const router = useRouter();
 
-  const authStateChanged = async (authState: User | null) => {
+  const authStateChanged = (authState: User | null) => {
     if (!authState) {
-      setUser(null)
+      if (router.pathname != "/") router.push("/");
+      setAuthUser(null)
       setLoading(false)
       return;
     }
 
     setLoading(true);
-    setUser(authState);    
+    setAuthUser(authState);    
     setLoading(false);
   };
 
@@ -24,7 +26,7 @@ export default function useFirebaseAuth() {
   }, []);
 
   return {
-    user,
-    loading,
+    authUser,
+    authUserLoading: loading,
   };
 }

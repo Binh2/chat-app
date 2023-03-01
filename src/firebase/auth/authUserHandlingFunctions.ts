@@ -18,16 +18,19 @@ export async function addNewUserWithGithub() {
     // IdP data available using getAdditionalUserInfo(result)
     return userCredential;
   })
-  addUserToFirestoreWithoutDup(userToUserType(userCredential.user))
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // The email of the user's account used.
-    const email = error.customData.email;
-    // The AuthCredential type that was used.
-    const credential = GithubAuthProvider.credentialFromError(error);
-    // ...
-  });
+  .then(userCredential => {
+    addUserToFirestoreWithoutDup(userToUserType(userCredential.user))
+  })
+  // .catch((error) => {
+  //   const errorCode = error.code;
+  //   const errorMessage = error.message;
+  //   // The email of the user's account used.
+  //   const email = error.customData.email;
+  //   // The AuthCredential type that was used.
+  //   const credential = GithubAuthProvider.credentialFromError(error);
+  //   // ...
+  // });
+  
   return userCredential;
 }
 export async function addNewUserAnonymously() {

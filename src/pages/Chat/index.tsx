@@ -7,9 +7,9 @@ import { useRef, useState } from "react";
 
 import logoImage from '/public/logo-with-text.svg';
 
-import { useFirestoreUser } from "@/components/Users/useFirestoreUser";
+import { useUser } from "@/components/Users/useUser";
 import { UsersFinder } from "@/components/Users/UsersFinder";
-import useFirebaseAuth from "@/firebase/auth/useFirebaseAuth";
+import useFirebaseAuth from "@/firebase/auth/useAuthUser";
 import Users from "@/components/Users";
 import styles from '@/styles/Chat.module.css';
 import { addUserToFirestore } from "@/components/Users/userHandlingFunctions";
@@ -17,15 +17,17 @@ import { useGroups } from "@/components/Groups/useGroups";
 import { useMessages } from "@/components/Messages/useMessages";
 import { Messages } from "@/components/Messages";
 import { addMessageToFirestore } from "@/components/Messages/messageHandlingFunctions";
-import { addGroupToFirestore } from "@/components/Groups/groupHandlingFunctions";
+import { addGroupToFirestore, addGroupToFirestoreWithoutDup } from "@/components/Groups/groupHandlingFunctions";
 import { Groups } from "@/components/Groups";
+import { useCurrentGroup } from "@/components/Groups/useCurrentGroup";
 
 export default function Chat() {
-  const { messages } = useMessages(10);
   const messageBox = useRef<HTMLInputElement>(null);
-  const { user, loading } = useFirebaseAuth();
-  const { firestoreUsers, firestoreUsersLoading } = useFirestoreUser("", "");
-  const { groups } = useGroups();
+  const { authUser, authUserLoading } = useFirebaseAuth();
+  const { users, usersLoading } = useUser();
+  const { groups, groupsLoading } = useGroups();
+  const { currentGroup, setCurrentGroup } = useCurrentGroup();
+  const { messages } = useMessages(currentGroup, 10);
 
   useEffect(() => onSnapshot(collection(getFirestore(), "messages"), 
     (collection: QuerySnapshot<DocumentData>) => {
@@ -38,7 +40,7 @@ export default function Chat() {
   function sendMessage(event: SyntheticEvent) {
     event.preventDefault();
     if (messageBox.current == null) return;
-    addMessageToFirestore(messageBox.current.value ?? "");
+    addMessageToFirestore(currentGroup, messageBox.current.value ?? "");
     messageBox.current.value = ""
   }
 
@@ -52,24 +54,26 @@ export default function Chat() {
             <Image src={logoImage} alt="App logo" className={styles.logoImage} priority={true} />
           </Link>
 
-          { loading ? <p>Loading...</p> : <p>{user?.email ?? "null"}</p>}
-          { loading ? <p>Loading...</p> : <p>{user?.uid ?? "null"}</p>}
+          { authUserLoading ? <p>Loading...</p> : <p>{authUser?.email ?? "null"}</p>}
+          { authUserLoading ? <p>Loading...</p> : <p>{authUser?.uid ?? "null"}</p>}
 
-          <UsersFinder></UsersFinder>
+          <UsersFinder onClickOnUser={(event, user) => {addGroupToFirestoreWithoutDup(user?.id);}}></UsersFinder>
 
           <button onClick={() => addUserToFirestore({
-            uid: "123",
+            id: "123",
             email: "mary@gmail.com",
             displayName: "Mary Curie",
             photoURL: ""
           })}>Add fake user</button>
-          <Users firestoreUsers={firestoreUsers} firestoreUsersLoading={firestoreUsersLoading} ></Users>
+          {/* <Users users={users} usersLoading={usersLoading} 
+            onClickOnUser={(event, user) => {addGroupToFirestoreWithoutDup(user?.id ?? "chat/index.tsx");}}></Users> */}
           Groups
-          <Groups groups={groups}></Groups>
+          <Groups groups={groups} groupsLoading={groupsLoading} currentGroup={currentGroup}
+            onCurrentGroupSwitch={(event, oldGroup, newGroup) => setCurrentGroup(newGroup)}></Groups>
         </div>
 
         <div className={styles.contact__header}>
-          <p>Mary Doe</p>
+          <p>{ authUserLoading ? <p>Loading...</p> : <p>{authUser?.displayName ?? "null"}</p>}</p>
         </div>
         <Messages messages={messages}></Messages>
         <form className={styles.messageBox} onSubmit={sendMessage}>

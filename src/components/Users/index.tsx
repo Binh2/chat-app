@@ -6,26 +6,27 @@ import styles from "./Users.module.css";
 
 import { UserType } from "@/components/Users/UserType";
 import { addGroupToFirestore } from "../Groups/groupHandlingFunctions";
+import { SyntheticEvent } from "react";
 
-export default function Users(props: { firestoreUsers: UserType[], firestoreUsersLoading: boolean }) {
+export default function Users(props: { users: UserType[], usersLoading: boolean, 
+onClickOnUser?: (event?: SyntheticEvent, user?: UserType) => void | undefined}) {
   const message = "hello";
-  // const { firestoreGroups, addFirestoreGroup } = useFirestoreGroups();
   return (
     <>
       <ul>
-        {props.firestoreUsers.map((firestoreUser, index) => (<li key={index} className={styles.user} 
-          onClick={(event) => addGroupToFirestore(firestoreUser.uid)}>
-          <div className={styles.user_uid}>{firestoreUser.uid}</div>
+        {props.users.map((user, index) => (<li key={index} className={styles.user} 
+          onClick={event => props.onClickOnUser?.(event, user)}>
+          <div className={styles.user_uid}>{user.id}</div>
           {
-            firestoreUser.photoURL ? 
-            <Image src={ firestoreUser.photoURL } alt="Profile pic" className={styles.user_pic}></Image> :
+            user.photoURL ? 
+            <Image src={ user.photoURL } alt="Profile pic" className={styles.user_pic}></Image> :
             <Image src={ logoImage } alt="Profile pic" className={styles.user_pic}></Image>
           }
           
-          <div className={styles.user_name}>{firestoreUser.displayName}</div>
+          <div className={styles.user_name}>{user.displayName}</div>
           <div className={styles.user_message}>{message}</div>
         </li>))}
-        { props.firestoreUsersLoading && <li >Loading...</li> }
+        { props.usersLoading && <li >Loading...</li> }
       </ul>
     </>
   )

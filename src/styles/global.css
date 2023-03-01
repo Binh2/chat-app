@@ -20,9 +20,7 @@
 }
 .firebase-emulator-warning {
   opacity: 0.2;
-}
-.firebase-emulator-warning:hover {
-  display: none;
+  pointer-events: none;
 }
 
 /* :root {

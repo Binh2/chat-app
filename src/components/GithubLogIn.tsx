@@ -5,7 +5,11 @@ export function GithubLogIn() {
   const router = useRouter();
   
   async function logInWithGithub() {
-    await addNewUserWithGithub();
+    try {
+      await addNewUserWithGithub();
+    } catch {
+      return;
+    }
     router.push("/chat")
   }
   return (

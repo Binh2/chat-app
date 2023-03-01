@@ -31,7 +31,6 @@ export default function LogInForm() {
     }
   }
   async function logInAsGuest() {
-    // signInAnonymously(getAuth());
     await addNewUserAnonymously();
     router.push("/chat");
   }

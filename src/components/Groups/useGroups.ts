@@ -1,25 +1,29 @@
-import useFirebaseAuth from "@/firebase/auth/useFirebaseAuth";
+import useFirebaseAuth from "@/firebase/auth/useAuthUser";
 import { firebaseDb } from "@/firebase/firestore";
-import { Unsubscribe } from "firebase/auth";
-import { addDoc, collection, DocumentData, getFirestore, onSnapshot, QuerySnapshot } from "firebase/firestore";
+import { getAuth, Unsubscribe } from "firebase/auth";
+import { collection, DocumentData, DocumentSnapshot, getFirestore, limit, onSnapshot, orderBy, query, QuerySnapshot, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { FirestoreGroupType, queryDocumentSnapshotToFirestoreGroupType } from "./FirestoreGroupType";
 
 export function useGroups() {
   const [ firestoreGroups, setFirestoreGroups ] = useState<FirestoreGroupType[]>([]);
-  // const { user } = useFirebaseAuth();
+  const [ loading, setLoading ] = useState(true);
 
   useEffect(() => {
-    const unsubscribeFunctions: Unsubscribe[] = [];
-    const unsubscribeFunction = onSnapshot(collection(firebaseDb, "groups"), async (querySnapshot: QuerySnapshot<DocumentData>) => {
-      setFirestoreGroups(querySnapshot.docs.map((doc) => queryDocumentSnapshotToFirestoreGroupType(doc)));
-    });
-    unsubscribeFunctions.push(unsubscribeFunction);
-    return () => unsubscribeFunctions.forEach((unsubscribeFunction) => unsubscribeFunction());
-  })
+    setLoading(true);
+    const authUser = getAuth().currentUser;
+    const unsubscribeFunction = onSnapshot(
+      query(collection(getFirestore(), "groups"), where("userIds", "array-contains", authUser?.uid ?? "")), 
+      (querySnapshot) => {
+        setFirestoreGroups(querySnapshot.docs.map((doc) => queryDocumentSnapshotToFirestoreGroupType(doc)));
+      }
+    );
+    setLoading(false);
+    return unsubscribeFunction;
+  }, []);
 
   return {
-    // groups: firestoreGroups.map(firestoreGroup => firestoreGroupTypeToGroupType(firestoreGroup)),
-    groups: firestoreGroups
+    groups: firestoreGroups,
+    groupsLoading: loading,
   }
 }

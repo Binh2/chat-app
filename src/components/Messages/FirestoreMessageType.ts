@@ -9,11 +9,12 @@ export type FirestoreMessageType = {
 }
 
 export function queryDocumentSnapshotToFirestoreMessageType(queryDocumentSnapshot: QueryDocumentSnapshot<DocumentData>) {
+  const documentData = queryDocumentSnapshot.data();
   return {
-    message: queryDocumentSnapshot.data.message,
-    time: queryDocumentSnapshot.data.time,
-    isReceived: queryDocumentSnapshot.data.isReceived,
-    from: queryDocumentSnapshot.data.from,
+    message: documentData.message,
+    time: documentData.time,
+    isReceived: documentData.isReceived,
+    from: documentData.from,
     id: queryDocumentSnapshot.id
   }
 }

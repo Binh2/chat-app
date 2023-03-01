@@ -1,7 +1,4 @@
-import { getAuth } from "firebase/auth"
-import { DocumentData } from "firebase/firestore"
 import { MessageType } from "../Messages/MessageType"
-import { getFirestoreUsersByUid } from "../Users/userHandlingFunctions"
 import { UserType } from "../Users/UserType"
 import { FirestoreGroupType } from "./FirestoreGroupType"
 

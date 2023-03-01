@@ -2,19 +2,19 @@ import { User } from "firebase/auth"
 import { DocumentData } from "firebase/firestore";
 
 export type UserType = {
-  uid: string,
+  id: string,
   email: string,
   displayName: string,
   photoURL: string, 
 }
 export function userToUserType(user: User) {
   return (({uid, email, displayName, photoURL}) => ({
-    uid, 
+    id: uid, 
     email: email ?? "", 
     displayName: displayName ?? "", 
     photoURL: photoURL ?? ""
   }))(user);
 }
 export function documentDataToUserType(doc: DocumentData) {
-  return (({uid, email, displayName, photoURL}) => ({uid, email, displayName, photoURL}))(doc);
+  return (({id, email, displayName, photoURL}) => ({id, email, displayName, photoURL}))(doc);
 }
