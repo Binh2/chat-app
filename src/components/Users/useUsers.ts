@@ -3,11 +3,11 @@ import { UserType, userTypeConverter } from "./UserType";
 import { collection, getFirestore, limit, onSnapshot, orderBy, query, QuerySnapshot, where } from 'firebase/firestore';
 
 const userCollectionRef = collection(getFirestore(), "users");
-export function useUser(number_of_user: number = 4, searchField: string = "", searchText: string = "") {
-  const [ firestoreUsers, setFirestoreUsers ] = useState<UserType[]>([]);
+export function useUsers(number_of_user: number = 4, searchField: string = "", searchText: string = "") {
+  const [ users, setUsers ] = useState<UserType[]>([]);
   const [ loading, setLoading ] = useState(true);
   function handleSnapshot(collection: QuerySnapshot<UserType>) {
-    setFirestoreUsers(collection.docs.map(doc => doc.data()));
+    setUsers(collection.docs.map(doc => doc.data()));
   }
   useEffect(() => {
     setLoading(true);
@@ -34,7 +34,8 @@ export function useUser(number_of_user: number = 4, searchField: string = "", se
   }, [ number_of_user, searchText, searchField ]);
   
   return {
-    users: firestoreUsers,
+    users: users,
     usersLoading: loading,
+    setUsersLoading: setLoading,
   };
 }

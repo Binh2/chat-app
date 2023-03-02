@@ -1,3 +1,4 @@
+import { useAuthUserContext } from "@/firebase/auth/AuthUserContext";
 import useAuthUser from "@/firebase/auth/useAuthUser";
 import { SyntheticEvent, useEffect } from "react";
 import { FirestoreGroupType } from "./FirestoreGroupType";
@@ -9,15 +10,17 @@ currentGroup: FirestoreGroupType | null, onCurrentGroupChange?: (
   newGroup: FirestoreGroupType,
   event?: SyntheticEvent, 
 ) => void }) {
-  const { authUser, authUserLoading } = useAuthUser();
+  const { authUser, authUserLoading } = useAuthUserContext();
 
   function isSameGroups(group1: FirestoreGroupType | null, group2: FirestoreGroupType | null) {
     return group1 && group2 && group1.userIds.join(",") == group2.userIds.join(",");
   };
+
+  const {groups, currentGroup, onCurrentGroupChange} = props;
   useEffect(() => {
-    if (props.groups.length > 0 && !isSameGroups(props.groups[0], props.currentGroup))
-      props.onCurrentGroupChange?.(null, props.groups[0]);
-  }, [props])
+    if (!currentGroup && groups.length > 0 && !isSameGroups(groups[0], currentGroup))
+      onCurrentGroupChange?.(null, groups[0]);
+  }, [groups, currentGroup, onCurrentGroupChange]);
 
   return (
     <>
@@ -27,16 +30,17 @@ currentGroup: FirestoreGroupType | null, onCurrentGroupChange?: (
         : ""
       } */}
       <ul>
+        { props.groups.map(group =>  
+          <li key={group.id} 
+            className={ isSameGroups(props.currentGroup, group) ? styles.group__active : ""}
+            onClick={event => !isSameGroups(props.currentGroup, group) && 
+              props.onCurrentGroupChange?.(props.currentGroup, group, event)
+            }
+          >{group.userIds.find((userId) => userId != authUser?.uid)}</li>
+        )}
         { authUserLoading || props.groupsLoading ? 
           "Loading..." :
-          props.groups.map(group =>  
-            <li key={group.id} 
-              className={ isSameGroups(props.currentGroup, group) ? styles.group__active : ""}
-              onClick={event => !isSameGroups(props.currentGroup, group) && 
-                props.onCurrentGroupChange?.(props.currentGroup, group, event)
-              }
-            >{group.userIds.find((userId) => userId != authUser?.uid)}</li>
-          )
+          ""
         }
       </ul>
     </>  

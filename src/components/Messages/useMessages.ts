@@ -1,7 +1,6 @@
 import { getFirestore, collection, addDoc, onSnapshot, query, Timestamp, orderBy, limit } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { FirestoreGroupType } from "../Groups/FirestoreGroupType";
-import { FirestoreMessageType } from "./FirestoreMessageType";
 import { MessageType, messageTypeConverter } from "./MessageType";
 
 export function useMessages(currentGroup: FirestoreGroupType | null, number_of_message: number = 10) {

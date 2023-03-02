@@ -7,25 +7,22 @@ import { useRef, useState } from "react";
 
 import logoImage from '/public/logo-with-text.svg';
 
-import { useUser } from "@/components/Users/useUser";
 import { UsersFinderForm } from "@/components/Users/UsersFinderForm";
 import useFirebaseAuth from "@/firebase/auth/useAuthUser";
-import Users from "@/components/Users";
 import styles from '@/styles/Chat.module.css';
 import { addUserToFirestore } from "@/components/Users/userHandlingFunctions";
 import { useGroups } from "@/components/Groups/useGroups";
 import { useMessages } from "@/components/Messages/useMessages";
 import { Messages } from "@/components/Messages";
 import { addMessageToFirestore } from "@/components/Messages/messageHandlingFunctions";
-import { addGroupToFirestore, addGroupToFirestoreWithoutDup } from "@/components/Groups/groupHandlingFunctions";
+import { addGroupToFirestoreWithoutDup } from "@/components/Groups/groupHandlingFunctions";
 import { Groups } from "@/components/Groups";
 import { useCurrentGroup } from "@/components/Groups/useCurrentGroup";
 
 export default function Chat() {
   const messageBox = useRef<HTMLInputElement>(null);
   const { authUser, authUserLoading } = useFirebaseAuth();
-  const { users, usersLoading } = useUser();
-  const { groups, groupsLoading } = useGroups();
+  const { groups, groupsLoading, setGroupsLoading } = useGroups();
   const { currentGroup, setCurrentGroup } = useCurrentGroup();
   const { messages, messagesLoading, setMessagesLoading } = useMessages(currentGroup, 10);
 
@@ -57,7 +54,11 @@ export default function Chat() {
           { authUserLoading ? <p>Loading...</p> : <p>{authUser?.email ?? "null"}</p>}
           { authUserLoading ? <p>Loading...</p> : <p>{authUser?.uid ?? "null"}</p>}
 
-          <UsersFinderForm onClickOnUser={(event, user) => {addGroupToFirestoreWithoutDup(user?.id);}}></UsersFinderForm>
+          <UsersFinderForm onClickOnUser={async (event, user) => {
+            setGroupsLoading(true);
+            await addGroupToFirestoreWithoutDup(user?.id);
+            setGroupsLoading(false);
+          }}></UsersFinderForm>
 
           <button onClick={() => addUserToFirestore({
             id: "123",
@@ -70,8 +71,8 @@ export default function Chat() {
           Groups
           <Groups groups={groups} groupsLoading={groupsLoading} currentGroup={currentGroup}
             onCurrentGroupChange={(oldGroup, newGroup, event) => { 
-              setCurrentGroup(newGroup);
               setMessagesLoading(true);
+              setCurrentGroup(newGroup);
             }}></Groups>
         </div>
 

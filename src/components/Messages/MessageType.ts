@@ -1,4 +1,4 @@
-import { QueryDocumentSnapshot, SnapshotOptions } from "firebase/firestore";
+import { QueryDocumentSnapshot, SnapshotOptions, Timestamp } from "firebase/firestore";
 
 export type MessageType = {
   message: string,
@@ -12,7 +12,7 @@ export const messageTypeConverter = {
   toFirestore: (message: MessageType) => {
     return {
       message: message.message,
-      time: message.time,
+      time: Timestamp.fromDate(message.time),
       from: message.from,
     }
   },
@@ -20,7 +20,7 @@ export const messageTypeConverter = {
     const data = snapshot.data();
     return {
       message: data.message,
-      time: data.time,
+      time: data.time.toDate(),
       isReceived: true,
       from: data.from,
       id: snapshot.id

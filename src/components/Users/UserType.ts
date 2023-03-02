@@ -21,6 +21,7 @@ export function authUserToUserType(user: User | null) {
 export const userTypeConverter = {
   toFirestore: (user: UserType) => {
     return {
+      id: user.id,
       email: user.email,
       displayName: user.displayName,
       photoUrl: user.photoUrl,
@@ -29,7 +30,7 @@ export const userTypeConverter = {
   fromFirestore: (snapshot: QueryDocumentSnapshot, options: SnapshotOptions) => {
     const data = snapshot.data(options);
     return {
-      id: snapshot.id,
+      id: data.id,
       email: data.email,
       displayName: data.displayName,
       photoUrl: data.photoUrl,

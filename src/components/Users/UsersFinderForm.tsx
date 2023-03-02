@@ -2,12 +2,12 @@ import styles from '@/styles/Chat.module.css';
 import { SyntheticEvent, useState } from 'react';
 import Users from '.';
 import { UserType } from './UserType';
-import { useUser } from './useUser';
+import { useUsers } from './useUsers';
 
 export function UsersFinderForm(props: {onClickOnUser?: (event?: SyntheticEvent, user?: UserType) => void}) {
   const [ searchField, setSearchField ] = useState<string>("name");
   const [ searchText, setSearchText ] = useState<string>("");
-  const { users, usersLoading } = useUser(4, searchField, searchText);
+  const { users, usersLoading, setUsersLoading } = useUsers(4, searchField, searchText);
 
   return (
     <>
@@ -15,7 +15,10 @@ export function UsersFinderForm(props: {onClickOnUser?: (event?: SyntheticEvent,
         <label htmlFor="search-by-drop-down">Search by</label>
         {' '}
         <select id="search-by-drop-down" name="search-by" value={searchField} 
-          onChange={(event) => setSearchField(event.target.value)}>
+          onChange={(event) => {
+            setUsersLoading(true);
+            setSearchField(event.target.value);
+          }}>
           {/* <option value=""></option> */}
           <option value="id">user ID</option>
           <option value="name">name</option>
@@ -26,7 +29,10 @@ export function UsersFinderForm(props: {onClickOnUser?: (event?: SyntheticEvent,
         </select>
         { searchField == "name" ? " that start with: ": searchField == "id" ? " that match exactly": "" }
         <input className={styles.search} type="text" value={searchText} 
-          onChange={(event) => setSearchText(event.target.value)}></input>
+          onChange={(event) => {
+            setUsersLoading(true);
+            setSearchText(event.target.value);
+          }}></input>
       </form>
       { <Users users={users} usersLoading={usersLoading} onClickOnUser={props.onClickOnUser}></Users> }
     </>

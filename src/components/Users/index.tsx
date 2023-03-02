@@ -25,7 +25,7 @@ onClickOnUser?: (event?: SyntheticEvent, user?: UserType) => void | undefined}) 
           <div className={styles.user_name}>{user.displayName}</div>
           <div className={styles.user_message}>{message}</div>
         </li>))}
-        { props.usersLoading && <li >Loading...</li> }
+        { props.usersLoading && "Loading..." }
       </ul>
     </>
   )
