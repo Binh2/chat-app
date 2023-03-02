@@ -69,7 +69,7 @@ export default function Chat() {
             onClickOnUser={(event, user) => {addGroupToFirestoreWithoutDup(user?.id ?? "chat/index.tsx");}}></Users> */}
           Groups
           <Groups groups={groups} groupsLoading={groupsLoading} currentGroup={currentGroup}
-            onCurrentGroupSwitch={(event, oldGroup, newGroup) => setCurrentGroup(newGroup)}></Groups>
+            onCurrentGroupSwitch={(oldGroup, newGroup, event) => setCurrentGroup(newGroup)}></Groups>
         </div>
 
         <div className={styles.contact__header}>

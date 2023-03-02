@@ -16,3 +16,5 @@ export async function firestoreGroupTypeToGroupType(firestoreGroupType: Firestor
   // user = await getFirestoreUsersByUid(friendId);
   return firestoreGroupType;
 }
+
+// const groupTypeConverter
