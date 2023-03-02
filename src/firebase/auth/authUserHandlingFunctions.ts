@@ -1,10 +1,10 @@
 import { addUserToFirestore, addUserToFirestoreWithoutDup } from "@/components/Users/userHandlingFunctions";
-import { userToUserType } from "@/components/Users/UserType";
+import { authUserToUserType } from "@/components/Users/UserType";
 import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, signInAnonymously, signInWithPopup } from "firebase/auth";
 
 export async function addNewUserWithEmailAndPassword(email: string, password: string) {
   const userCredential = await createUserWithEmailAndPassword(getAuth(), email, password);
-  addUserToFirestore(userToUserType(userCredential.user));
+  addUserToFirestore(authUserToUserType(userCredential.user));
   return userCredential;
 }
 export async function addNewUserWithGithub() {
@@ -19,7 +19,7 @@ export async function addNewUserWithGithub() {
     return userCredential;
   })
   .then(userCredential => {
-    addUserToFirestoreWithoutDup(userToUserType(userCredential.user))
+    addUserToFirestoreWithoutDup(authUserToUserType(userCredential.user))
   })
   // .catch((error) => {
   //   const errorCode = error.code;
@@ -35,6 +35,6 @@ export async function addNewUserWithGithub() {
 }
 export async function addNewUserAnonymously() {
   const userCredential = await signInAnonymously(getAuth());
-  addUserToFirestoreWithoutDup(userToUserType(userCredential.user));
+  addUserToFirestoreWithoutDup(authUserToUserType(userCredential.user));
   return userCredential;
 }

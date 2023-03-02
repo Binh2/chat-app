@@ -1,3 +1,4 @@
+import { User } from "firebase/auth";
 import { QueryDocumentSnapshot, SnapshotOptions } from "firebase/firestore";
 
 export type UserType = {
@@ -5,6 +6,16 @@ export type UserType = {
   email: string,
   displayName: string,
   photoUrl: string, 
+}
+
+export function authUserToUserType(user: User | null) {
+  if (!user) return null;
+  return {
+    id: user.uid,
+    email: user.email ?? "",
+    displayName: user.displayName ?? "",
+    photoUrl: user.photoURL ?? "",
+  }
 }
 
 export const userTypeConverter = {
