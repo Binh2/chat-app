@@ -5,7 +5,6 @@ import logoImage from '/public/thirteen.svg';
 import styles from "./Users.module.css";
 
 import { UserType } from "@/components/Users/UserType";
-import { addGroupToFirestore } from "../Groups/groupHandlingFunctions";
 import { SyntheticEvent } from "react";
 
 export default function Users(props: { users: UserType[], usersLoading: boolean, 
@@ -18,8 +17,8 @@ onClickOnUser?: (event?: SyntheticEvent, user?: UserType) => void | undefined}) 
           onClick={event => props.onClickOnUser?.(event, user)}>
           <div className={styles.user_uid}>{user.id}</div>
           {
-            user.photoURL ? 
-            <Image src={ user.photoURL } alt="Profile pic" className={styles.user_pic}></Image> :
+            user.photoUrl ? 
+            <Image src={ user.photoUrl } alt="Profile pic" className={styles.user_pic}></Image> :
             <Image src={ logoImage } alt="Profile pic" className={styles.user_pic}></Image>
           }
           

@@ -1,9 +1,8 @@
-import { MessageType } from "../Messages/MessageType"
+import { collection, doc, getDoc, getDocs, getFirestore, query, QueryDocumentSnapshot, QuerySnapshot, SnapshotOptions, where } from "firebase/firestore";
 import { UserType } from "../Users/UserType"
 import { FirestoreGroupType } from "./FirestoreGroupType"
 
 export type GroupType = {
-  messages: string[] | MessageType[],
   users: UserType[],
   id: string
 }
@@ -17,4 +16,16 @@ export async function firestoreGroupTypeToGroupType(firestoreGroupType: Firestor
   return firestoreGroupType;
 }
 
-// const groupTypeConverter
+// export const groupTypeConverter = {
+//   toFirestore: (group: GroupType) => {
+//     return {
+//       userIds: group.users.map(user => user.id),
+//     };
+//   },
+//   fromFirestore: (snapshot: QueryDocumentSnapshot, options: SnapshotOptions) => {
+//     const data = snapshot.data(options);
+//     return {
+//       users: await getDocs(query(collection(getFirestore(), "users"), where("id", "in", data.userIds)))
+//     };
+//   }
+// };

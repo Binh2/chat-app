@@ -1,10 +1,10 @@
 import styles from '@/styles/Chat.module.css';
 import { SyntheticEvent, useState } from 'react';
-import Users from '..';
-import { UserType } from '../UserType';
-import { useUser } from '../useUser';
+import Users from '.';
+import { UserType } from './UserType';
+import { useUser } from './useUser';
 
-export function UsersFinder(props: {onClickOnUser?: (event?: SyntheticEvent, user?: UserType) => void}) {
+export function UsersFinderForm(props: {onClickOnUser?: (event?: SyntheticEvent, user?: UserType) => void}) {
   const [ searchField, setSearchField ] = useState<string>("name");
   const [ searchText, setSearchText ] = useState<string>("");
   const { users, usersLoading } = useUser(4, searchField, searchText);

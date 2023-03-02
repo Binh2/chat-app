@@ -4,7 +4,7 @@ import { FirestoreGroupType } from "./FirestoreGroupType";
 import styles from "./Groups.module.css";
 
 export function Groups(props: { groups: FirestoreGroupType[], groupsLoading: boolean, 
-currentGroup: FirestoreGroupType | null, onCurrentGroupSwitch?: (
+currentGroup: FirestoreGroupType | null, onCurrentGroupChange?: (
   oldGroup: FirestoreGroupType | null, 
   newGroup: FirestoreGroupType,
   event?: SyntheticEvent, 
@@ -15,8 +15,8 @@ currentGroup: FirestoreGroupType | null, onCurrentGroupSwitch?: (
     return group1 && group2 && group1.userIds.join(",") == group2.userIds.join(",");
   };
   useEffect(() => {
-    if (props.groups.length == 1 && !isSameGroups(props.groups[0], props.currentGroup))
-      props.onCurrentGroupSwitch?.(null, props.groups[0]);
+    if (props.groups.length > 0 && !isSameGroups(props.groups[0], props.currentGroup))
+      props.onCurrentGroupChange?.(null, props.groups[0]);
   }, [props])
 
   return (
@@ -32,7 +32,9 @@ currentGroup: FirestoreGroupType | null, onCurrentGroupSwitch?: (
           props.groups.map(group =>  
             <li key={group.id} 
               className={ isSameGroups(props.currentGroup, group) ? styles.group__active : ""}
-              onClick={event => props.onCurrentGroupSwitch?.(props.currentGroup, group, event)}
+              onClick={event => !isSameGroups(props.currentGroup, group) && 
+                props.onCurrentGroupChange?.(props.currentGroup, group, event)
+              }
             >{group.userIds.find((userId) => userId != authUser?.uid)}</li>
           )
         }

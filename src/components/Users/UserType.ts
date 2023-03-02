@@ -1,20 +1,27 @@
-import { User } from "firebase/auth"
-import { DocumentData } from "firebase/firestore";
+import { QueryDocumentSnapshot, SnapshotOptions } from "firebase/firestore";
 
 export type UserType = {
   id: string,
   email: string,
   displayName: string,
-  photoURL: string, 
+  photoUrl: string, 
 }
-export function userToUserType(user: User) {
-  return (({uid, email, displayName, photoURL}) => ({
-    id: uid, 
-    email: email ?? "", 
-    displayName: displayName ?? "", 
-    photoURL: photoURL ?? ""
-  }))(user);
-}
-export function documentDataToUserType(doc: DocumentData) {
-  return (({id, email, displayName, photoURL}) => ({id, email, displayName, photoURL}))(doc);
-}
+
+export const userTypeConverter = {
+  toFirestore: (user: UserType) => {
+    return {
+      email: user.email,
+      displayName: user.displayName,
+      photoUrl: user.photoUrl,
+    }
+  },
+  fromFirestore: (snapshot: QueryDocumentSnapshot, options: SnapshotOptions) => {
+    const data = snapshot.data(options);
+    return {
+      id: snapshot.id,
+      email: data.email,
+      displayName: data.displayName,
+      photoUrl: data.photoUrl,
+    };
+  }
+};

@@ -8,7 +8,7 @@ import { useRef, useState } from "react";
 import logoImage from '/public/logo-with-text.svg';
 
 import { useUser } from "@/components/Users/useUser";
-import { UsersFinder } from "@/components/Users/UsersFinder";
+import { UsersFinderForm } from "@/components/Users/UsersFinderForm";
 import useFirebaseAuth from "@/firebase/auth/useAuthUser";
 import Users from "@/components/Users";
 import styles from '@/styles/Chat.module.css';
@@ -27,7 +27,7 @@ export default function Chat() {
   const { users, usersLoading } = useUser();
   const { groups, groupsLoading } = useGroups();
   const { currentGroup, setCurrentGroup } = useCurrentGroup();
-  const { messages } = useMessages(currentGroup, 10);
+  const { messages, messagesLoading, setMessagesLoading } = useMessages(currentGroup, 10);
 
   useEffect(() => onSnapshot(collection(getFirestore(), "messages"), 
     (collection: QuerySnapshot<DocumentData>) => {
@@ -57,25 +57,28 @@ export default function Chat() {
           { authUserLoading ? <p>Loading...</p> : <p>{authUser?.email ?? "null"}</p>}
           { authUserLoading ? <p>Loading...</p> : <p>{authUser?.uid ?? "null"}</p>}
 
-          <UsersFinder onClickOnUser={(event, user) => {addGroupToFirestoreWithoutDup(user?.id);}}></UsersFinder>
+          <UsersFinderForm onClickOnUser={(event, user) => {addGroupToFirestoreWithoutDup(user?.id);}}></UsersFinderForm>
 
           <button onClick={() => addUserToFirestore({
             id: "123",
             email: "mary@gmail.com",
             displayName: "Mary Curie",
-            photoURL: ""
+            photoUrl: ""
           })}>Add fake user</button>
           {/* <Users users={users} usersLoading={usersLoading} 
             onClickOnUser={(event, user) => {addGroupToFirestoreWithoutDup(user?.id ?? "chat/index.tsx");}}></Users> */}
           Groups
           <Groups groups={groups} groupsLoading={groupsLoading} currentGroup={currentGroup}
-            onCurrentGroupSwitch={(oldGroup, newGroup, event) => setCurrentGroup(newGroup)}></Groups>
+            onCurrentGroupChange={(oldGroup, newGroup, event) => { 
+              setCurrentGroup(newGroup);
+              setMessagesLoading(true);
+            }}></Groups>
         </div>
 
         <div className={styles.contact__header}>
           <p>{ authUserLoading ? <p>Loading...</p> : <p>{authUser?.displayName ?? "null"}</p>}</p>
         </div>
-        <Messages messages={messages}></Messages>
+        <Messages messages={messages} messagesLoading={messagesLoading}></Messages>
         <form className={styles.messageBox} onSubmit={sendMessage}>
           <input className={styles.messageBox_input} type="text" placeholder="Word your thought"
             ref={messageBox}></input>

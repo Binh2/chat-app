@@ -1,11 +1,13 @@
 import { MessageType } from "./MessageType";
 
-export function Messages(props: { messages: MessageType[] }) {
+export function Messages(props: { messages: MessageType[], messagesLoading: boolean }) {
   return (
     <>
-      <ol>
-        {props.messages.map((message, index) => (<li key={index}><p>{message.message}</p></li>))}
-      </ol>
+      { props.messagesLoading ? "Loading..." : 
+        <ol>
+          {props.messages.map((message, index) => (<li key={index}><p>{message.message}</p></li>))}
+        </ol>
+      }
     </>
   )
 }

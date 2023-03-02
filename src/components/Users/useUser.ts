@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
-import { documentDataToUserType, UserType } from "./UserType";
-import { collection, DocumentData, getFirestore, limit, onSnapshot, orderBy, query, QuerySnapshot, where } from 'firebase/firestore';
+import { UserType, userTypeConverter } from "./UserType";
+import { collection, getFirestore, limit, onSnapshot, orderBy, query, QuerySnapshot, where } from 'firebase/firestore';
 
 const userCollectionRef = collection(getFirestore(), "users");
 export function useUser(number_of_user: number = 4, searchField: string = "", searchText: string = "") {
   const [ firestoreUsers, setFirestoreUsers ] = useState<UserType[]>([]);
   const [ loading, setLoading ] = useState(true);
-  function handleSnapshot(collection: QuerySnapshot<DocumentData>) {
-    setFirestoreUsers(collection.docs.map(doc => documentDataToUserType(doc.data())));
+  function handleSnapshot(collection: QuerySnapshot<UserType>) {
+    setFirestoreUsers(collection.docs.map(doc => doc.data()));
   }
   useEffect(() => {
     setLoading(true);
@@ -15,7 +15,7 @@ export function useUser(number_of_user: number = 4, searchField: string = "", se
     if (searchField == "id")
       unsubscribeFunction = onSnapshot(query(userCollectionRef, where("id", "==", searchText), 
         orderBy("id"),
-        limit(number_of_user)), handleSnapshot
+        limit(number_of_user)).withConverter(userTypeConverter), handleSnapshot
       );
     else if (searchField == "name")  
       unsubscribeFunction = onSnapshot(query(userCollectionRef, 
@@ -25,8 +25,10 @@ export function useUser(number_of_user: number = 4, searchField: string = "", se
         // startAt(searchText), 
         // endAt(searchText + '\uf8ff'),
         limit(number_of_user),
-      ), handleSnapshot);
-    else unsubscribeFunction = onSnapshot(query(userCollectionRef, limit(number_of_user)), handleSnapshot);
+      ).withConverter(userTypeConverter), handleSnapshot);
+    else unsubscribeFunction = onSnapshot(query(userCollectionRef, limit(number_of_user)).withConverter(userTypeConverter), 
+      handleSnapshot
+    );
     setLoading(false);
     return unsubscribeFunction;
   }, [ number_of_user, searchText, searchField ]);
