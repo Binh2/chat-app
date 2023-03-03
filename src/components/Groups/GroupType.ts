@@ -3,8 +3,9 @@ import { UserType } from "../Users/UserType"
 import { FirestoreGroupType } from "./FirestoreGroupType"
 
 export type GroupType = {
+  id: string,
   users: UserType[],
-  id: string
+  newMessage: string,
 }
 
 export async function firestoreGroupTypeToGroupType(firestoreGroupType: FirestoreGroupType) {
