@@ -1,38 +1,115 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# chat-app - My chat website for people to chat
 
-## Getting Started
+## Table of contents
 
-First, run the development server:
+- [Overview](#overview)
+  - [Moltivation](#moltivation)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Run my source code locally](#run-my-source-code-locally)
+- [Author](#author)
+- [My recent works](#my-recent-works)
+- [Acknowledgments](#acknowledgments)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+## Overview
+
+### Motivation
+
+- As a front-end dev, this project is a really good way to learn Firebase and ReactJS.
+- Another reason is that I want to make a practical project.
+
+### Screenshot
+
+Desktop screenshot:
+![](desktop-screenshot.png)
+
+### Links
+
+- Source URL: [See my source code](https://github.com/Binh2/chat-app)
+- Live Site URL: [Visit my live site](https://chat-app-binh2.vercel.app/)
+
+## My process
+
+### Built with
+
+- HTML
+- CSS
+- Typescript
+- ReactJS + NextJS
+- Firebase (version 9 - modular)
+
+### What I learned
+
+```js
+// Firebase: Subscribe to a collection
+const userCollectionRef = collection(getFirestore(), "users");
+unsubscribeFunction = onSnapshot(query(userCollectionRef, where("id", "==", searchText), 
+  orderBy("id"),
+  limit(number_of_user)).withConverter(userTypeConverter), handleSnapshot
+);
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Continued development
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+If I were to continue working on this project, I would try to:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- Add an ability to block people.
+- See the newest message from a friend or group.
+- Order friends and groups by the newest message's date.
+- A better way to connect to other people
+- Offline cache.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Useful resources
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- [ReactJS](https://reactjs.org/) - This helped me with basic concepts like custom hooks, context, and using hooks,...
+- [NextJS](https://nextjs.org/) - This help me with basic layout of the project; basic NextJS elements like `<Image>`, `<Head>`;...
+- [Firebase](https://firebase.google.com/docs) - This helped me learn Firebase v9 and migrate Firebase v8 to v9 because most of the tutorial on Firebase is outdated.
+- [Firebase authentication in NextJS](https://blog.logrocket.com/implementing-authentication-in-next-js-with-firebase/) - This helped me a lot because I was stuck and don't know how to fix an error "auth user is null when got redirect". Turn out I just need to put the initializeApp from firebaseApp at the _app.tsx file
 
-## Learn More
+## Run my source code locally
 
-To learn more about Next.js, take a look at the following resources:
+### Clone my project to your local machine
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`git clone https://github.com/Binh2/chat-app.git`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Project setup (Download JS dependencies)
 
-## Deploy on Vercel
+`yarn install` or `yarn`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Compiles and hot-reloads for development
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+`yarn dev`
+
+## Author
+
+- Frontend Mentor - [@Binh2](https://www.frontendmentor.io/profile/Binh2)
+- Twitter - [@hgqbinh2002](https://twitter.com/hgqbinh2002)
+- LinkedIn - [hgqbinh2002](https://www.linkedin.com/in/hgqbinh2002/)
+
+## My recent works
+
+### My portfolio
+
+- Source URL: [See my source code](https://github.com/Binh2/portfolio/)
+- Live Site URL: [Visit my live site](https://portfolio-binh2.vercel.app)
+
+### A blog template
+
+- The source code: [Checkout my source code](https://github.com/Binh2/brother-blog)
+- Live Site URL: [My live webpage](https://binh2.github.io/brother-blog/)
+
+### Multi-step form
+
+- Solution URL: [My GitHub multi-step-form repo](https://github.com/Binh2/multi-step-form/)
+- Live Site URL: [Visit my live site](https://binh2.github.io/multi-step-form/)
+
+## Acknowledgments
+
+- Big thanks to this webpage [45 React projects order from easy to hard](https://contactmentor.com/best-react-projects-for-beginners-easy/) for giving me the idea to make this project
+- Big thanks to myself for completing this project (pretty lonely, yes)
+
