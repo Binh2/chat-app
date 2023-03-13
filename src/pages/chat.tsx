@@ -56,7 +56,7 @@ export default function Chat() {
 
           <UsersFinderForm onClickOnUser={async (event, user) => {
             setGroupsLoading(true);
-            await addGroupToFirestoreWithoutDup(user?.id);
+            await addGroupToFirestoreWithoutDup(user);
             setGroupsLoading(false);
           }}></UsersFinderForm>
 

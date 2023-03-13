@@ -1,6 +1,7 @@
 import { useAuthUserContext } from "@/firebase/auth/AuthUserContext";
 import useAuthUser from "@/firebase/auth/useAuthUser";
 import { SyntheticEvent, useEffect } from "react";
+import { Message } from "../Messages/Message";
 import { FirestoreGroupType } from "./FirestoreGroupType";
 import styles from "./Groups.module.css";
 
@@ -36,7 +37,10 @@ currentGroup: FirestoreGroupType | null, onCurrentGroupChange?: (
             onClick={event => !isSameGroups(props.currentGroup, group) && 
               props.onCurrentGroupChange?.(props.currentGroup, group, event)
             }
-          >{group.userIds.find((userId) => userId != authUser?.uid)}</li>
+          >
+            <p>{group.userIds.find((userId) => userId != authUser?.uid)}</p>
+            <Message group={group} />
+          </li>
         )}
         { authUserLoading || props.groupsLoading ? 
           "Loading..." :

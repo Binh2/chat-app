@@ -1,0 +1,66 @@
+.rightMessageContainer, .leftMessageContainer {
+  clear: both;
+}
+.rightMessageContainer {
+  float: right;
+}
+.leftMessageContainer {
+  float: left;
+}
+
+$triangle-width: 0.15em;
+$triangle-height: 0.4em;
+.rightMessageContainer .message::before, .leftMessageContainer .message::before {
+  content: "";
+  border-left: $triangle-width solid transparent;
+  border-right: $triangle-width solid transparent;
+  border-bottom: $triangle-height solid var(--color-blue);
+  position: absolute;
+  bottom: 0;
+}
+.rightMessageContainer .message::before {
+  right: $triangle-width * -1;
+}
+.leftMessageContainer .message::before {
+  left: $triangle-width * -1;
+}
+
+.message {
+  background: var(--color-blue);
+  color: var(--color-white);
+  padding: 0.25em;
+  display: inline-block;
+  position: relative;
+  margin: $triangle-width;
+}
+
+$border-radius: 0.5em;
+.rightMessageContainer .message {
+  border-radius: $border-radius $border-radius 0;
+}
+.leftMessageContainer .message {
+  border-radius: $border-radius $border-radius $border-radius 0;
+}
+
+.name {
+  font-size: 0.75em;
+}
+.date {
+  font-size: 0.5em;
+}
+
+.rightMessageContainer .messageWrapper {
+  float: right;
+  clear: both;
+}
+.rightMessageContainer .date {
+  float: right;
+  clear: both;
+}
+.rightMessageContainer .message {
+  float: right;
+}
+
+.messageContainer {
+  margin: 0.5em 0.1em;
+}

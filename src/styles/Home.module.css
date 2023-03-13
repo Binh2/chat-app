@@ -29,27 +29,18 @@
   font-weight: 400;
 }
 
-
-/*
-
-.description {
-  display: inherit;
-  justify-content: inherit;
-  align-items: inherit;
-  font-size: 0.85rem;
-  max-width: var(--max-width);
-  width: 100%;
-  z-index: 2;
-  font-family: var(--font-mono);
-}
-
-.description a {
+.forms {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
+  overflow-x: auto;
+  /* scroll-behavior: smooth;
+  scroll-snap-type: x mandatory; */
 }
-
+.form {
+  flex: 0 0 100%;
+  margin: 0 0.5px; /* To not let the other's form's side show up */ 
+  /* scroll-snap-align: start; */
+}
+/*
 .description p {
   position: relative;
   margin: 0;

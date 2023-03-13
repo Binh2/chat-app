@@ -19,15 +19,10 @@ export function UsersFinderForm(props: {onClickOnUser?: (event?: SyntheticEvent,
             setUsersLoading(true);
             setSearchField(event.target.value);
           }}>
-          {/* <option value=""></option> */}
           <option value="id">user ID</option>
           <option value="name">name</option>
-          {/* <option value="gender">Gender</option> */}
-          {/* <option value="age">Age</option> */}
-          {/* <option value="email">Email</option> */}
-          {/* <option value="phone">Phone number</option> */}
         </select>
-        { searchField == "name" ? " that start with: ": searchField == "id" ? " that match exactly": "" }
+        {/* { searchField == "name" ? " that start with: ": searchField == "id" ? " that match exactly": "" } */}
         <input className={styles.search} type="text" value={searchText} 
           onChange={(event) => {
             setUsersLoading(true);

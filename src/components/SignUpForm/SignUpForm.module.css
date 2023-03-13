@@ -54,13 +54,10 @@
   font-size: 0.5em;
   margin: 0 0 1em;
 }
-.goToSignUpFormButton {
-  color: var(--color-purple);
-  font-weight: 700;
+.goToLogInFormButton {
   cursor: pointer;
-}
-
-.logInButtons > * {
-  float: right;
-  clear: right;
+  background: white;
+  border-width: 0;
+  font-weight: 500; 
+  font-size: 2em;
 }

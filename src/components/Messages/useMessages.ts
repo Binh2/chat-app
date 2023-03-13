@@ -14,9 +14,9 @@ export function useMessages(currentGroup: FirestoreGroupType | null, number_of_m
     setLoading(true);
     const unsubscribeFunction = onSnapshot(query(collection(getFirestore(), "messages", "commaSeparatedUserIds", 
     currentGroup.userIds.join(",")).withConverter(messageTypeConverter), 
-      orderBy("time"), limit(number_of_message)),
+      orderBy("time", "desc"), limit(number_of_message)),
       (querySnapshot) => {
-        setMessages(querySnapshot.docs.map((doc) => doc.data()));
+        setMessages(querySnapshot.docs.map((doc) => doc.data()).reverse());
       }
     );
     setLoading(false);

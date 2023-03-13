@@ -1,5 +1,6 @@
 import '@/styles/reset.css'
 import '@/styles/global.css'
+import "@/styles/reusables/form.css";
 import type { AppProps } from 'next/app'
 import { Inter } from '@next/font/google'
 import { initFirebaseApp } from '@/firebase'

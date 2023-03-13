@@ -7,7 +7,7 @@ export async function addNewUserWithEmailAndPassword(email: string, password: st
   addUserToFirestore(authUserToUserType(userCredential.user));
   return userCredential;
 }
-export async function addNewUserWithGithub() {
+export async function addNewUserWithGitHub() {
   const provider = new GithubAuthProvider();
   const userCredential = await signInWithPopup(getAuth(), provider)
   .then((userCredential) => {
@@ -27,7 +27,7 @@ export async function addNewUserWithGithub() {
   //   // The email of the user's account used.
   //   const email = error.customData.email;
   //   // The AuthCredential type that was used.
-  //   const credential = GithubAuthProvider.credentialFromError(error);
+  //   const credential = GitHubAuthProvider.credentialFromError(error);
   //   // ...
   // });
   

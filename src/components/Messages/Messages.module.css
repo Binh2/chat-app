@@ -1,9 +1,0 @@
-.yourMessage, .othersMessage {
-  clear: both;
-}
-.yourMessage {
-  float: right;
-}
-.othersMessage {
-  float: left;
-}

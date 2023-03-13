@@ -1,23 +1,24 @@
-import { addNewUserAnonymously, addNewUserWithEmailAndPassword } from '@/firebase/auth/authUserHandlingFunctions';
+import { addNewUserWithEmailAndPassword } from '@/firebase/auth/authUserHandlingFunctions';
 import { scrollToSmoothly } from '@/styles/reusables/scrollHandlingFunctions';
 import { useRouter } from 'next/router';
 import { SyntheticEvent, useRef, useState } from 'react';
-import { GitHubLogIn } from '../../GitHubLogIn';
-import styles from './LogInForm.module.css'
-// import OtherLogInMethods from '../OtherLogInMethods'
+import styles from './SignUpForm.module.css'
 
-export default function LogInForm(props: {
-  className?: string
+export default function SignUpForm(props: {
+  className?: string,
 }) {
   const emailInput = useRef<HTMLInputElement>(null);
   const passwordInput = useRef<HTMLInputElement>(null);
+  const confirmPasswordInput = useRef<HTMLInputElement>(null);
   const router = useRouter();
   function logIn(e: SyntheticEvent) {
     e.preventDefault();
-    if (emailInput.current != null && passwordInput.current != null) {
+    if (emailInput.current != null && passwordInput.current != null && confirmPasswordInput.current != null) {
       const email = emailInput.current.value;
       const password = passwordInput.current.value;
+      const confirmPassword = confirmPasswordInput.current.value;
       
+      if (password != confirmPassword) return;
       addNewUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
         console.log(userCredential.user);
@@ -33,19 +34,16 @@ export default function LogInForm(props: {
       });
     }
   }
-  async function logInAsGuest() {
-    await addNewUserAnonymously();
-    router.push("/chat");
+  
+  function goToLogInForm() {
+    const formsElem = document.getElementById("forms");
+    scrollToSmoothly(formsElem, 0, 500, false);
   }
-  function goToSignUpForm() {
-    // document.getElementById("signUpForm")?.scrollIntoView();
-    // document.getElementById("forms")?.scroll(300, 0);
-    const formsElement = document.getElementById("forms");
-    scrollToSmoothly(formsElement, formsElement?.scrollWidth ?? 500, 500, false);
-  }  
+
   return (
     <>
-      <div className={props.className} id="logInForm">
+      <div className={props.className} id="signUpForm">
+        <button className={styles.goToLogInFormButton} onClick={goToLogInForm}>&lt;</button>
         <form className={styles.form} onSubmit={logIn}>
           <label className={styles.label} htmlFor="login-email">Email</label>
           <div className={styles.inputContainer}>
@@ -63,21 +61,17 @@ export default function LogInForm(props: {
               // title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
             ></input>
           </div>
-          <p className={styles.signUpText}>Don&lsquo;t have an account? {' '}
-            <span className={styles.goToSignUpFormButton} onClick={goToSignUpForm}>
-              Sign up
-            </span>
-          </p>
-          <div className={styles.logInButtons}>
-            <button className={`form__button`}>Log in</button>
+
+          <label className={styles.label} htmlFor="login-confirm-password">Confirm password</label>
+          <div className={styles.inputContainer}>
+            <input className={styles.input} ref={confirmPasswordInput}
+              type="password" id="login-password" required 
+              // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+              // title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+            ></input>
           </div>
+          <button className={`form__button`}>Sign up</button>
         </form>
-        <div className={styles.logInButtons}>
-          <p>or</p>
-          <button className={`form__button form__button--blue-text`} onClick={logInAsGuest}>Log in as guest</button>
-          <p>or</p>
-          <GitHubLogIn></GitHubLogIn>
-        </div>
       </div>
     </>
   )
