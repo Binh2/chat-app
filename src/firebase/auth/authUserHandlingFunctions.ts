@@ -1,7 +1,14 @@
 import { addUserToFirestore, addUserToFirestoreWithoutDup } from "@/components/Users/userHandlingFunctions";
 import { authUserToUserType } from "@/components/Users/UserType";
-import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, signInAnonymously, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, signInAnonymously, signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
+import { collection, getDoc, getDocs, getFirestore, query, where } from "firebase/firestore";
 
+export async function logInWithEmailAndPassword(email: string, password: string) {
+  // const users = await getDocs(query(collection(getFirestore(), "users"), where("email", "==", email)));
+  // if (users.docs.length < 1) return;
+  const userCredential = await signInWithEmailAndPassword(getAuth(), email, password);
+  return userCredential;
+}
 export async function addNewUserWithEmailAndPassword(email: string, password: string) {
   const userCredential = await createUserWithEmailAndPassword(getAuth(), email, password);
   addUserToFirestore(authUserToUserType(userCredential.user));

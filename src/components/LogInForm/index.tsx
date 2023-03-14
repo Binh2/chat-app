@@ -1,4 +1,4 @@
-import { addNewUserAnonymously, addNewUserWithEmailAndPassword } from '@/firebase/auth/authUserHandlingFunctions';
+import { addNewUserAnonymously, addNewUserWithEmailAndPassword, logInWithEmailAndPassword } from '@/firebase/auth/authUserHandlingFunctions';
 import { scrollToSmoothly } from '@/styles/reusables/scrollHandlingFunctions';
 import { useRouter } from 'next/router';
 import { SyntheticEvent, useRef, useState } from 'react';
@@ -18,7 +18,7 @@ export default function LogInForm(props: {
       const email = emailInput.current.value;
       const password = passwordInput.current.value;
       
-      addNewUserWithEmailAndPassword(email, password)
+      logInWithEmailAndPassword(email, password)
       .then((userCredential) => {
         console.log(userCredential.user);
         if (emailInput.current != null && passwordInput.current != null) {
@@ -38,10 +38,8 @@ export default function LogInForm(props: {
     router.push("/chat");
   }
   function goToSignUpForm() {
-    // document.getElementById("signUpForm")?.scrollIntoView();
-    // document.getElementById("forms")?.scroll(300, 0);
     const formsElement = document.getElementById("forms");
-    scrollToSmoothly(formsElement, formsElement?.scrollWidth ?? 500, 500, false);
+    scrollToSmoothly(formsElement, formsElement?.scrollWidth ? formsElement?.scrollWidth / 2 : 500, 500, false);
   }  
   return (
     <>

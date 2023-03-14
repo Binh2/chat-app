@@ -63,4 +63,5 @@
 .logInButtons > * {
   float: right;
   clear: right;
+  margin-bottom: 0.2em;
 }

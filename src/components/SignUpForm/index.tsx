@@ -11,7 +11,7 @@ export default function SignUpForm(props: {
   const passwordInput = useRef<HTMLInputElement>(null);
   const confirmPasswordInput = useRef<HTMLInputElement>(null);
   const router = useRouter();
-  function logIn(e: SyntheticEvent) {
+  function signUp(e: SyntheticEvent) {
     e.preventDefault();
     if (emailInput.current != null && passwordInput.current != null && confirmPasswordInput.current != null) {
       const email = emailInput.current.value;
@@ -22,13 +22,15 @@ export default function SignUpForm(props: {
       addNewUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
         console.log(userCredential.user);
-        if (emailInput.current != null && passwordInput.current != null) {
+        if (emailInput.current != null && passwordInput.current != null && confirmPasswordInput.current != null) {
           emailInput.current.value = "";
           passwordInput.current.value = "";
+          confirmPasswordInput.current.value = "";
         }
         router.push("/chat");
       })
       .catch((error) => {
+        alert(error.message);
         console.log(error.code);
         console.log(error.message);
       });
@@ -44,7 +46,7 @@ export default function SignUpForm(props: {
     <>
       <div className={props.className} id="signUpForm">
         <button className={styles.goToLogInFormButton} onClick={goToLogInForm}>&lt;</button>
-        <form className={styles.form} onSubmit={logIn}>
+        <form className={styles.form} onSubmit={signUp}>
           <label className={styles.label} htmlFor="login-email">Email</label>
           <div className={styles.inputContainer}>
             <input className={styles.input} ref={emailInput}
