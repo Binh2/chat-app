@@ -14,8 +14,8 @@ import { addUserToFirestore } from "@/components/Users/userHandlingFunctions";
 import { useGroups } from "@/components/Groups/useGroups";
 import { useMessages } from "@/components/Messages/useMessages";
 import { Messages } from "@/components/Messages";
-import { addMessageToFirestore } from "@/components/Messages/messageHandlingFunctions";
-import { addGroupToFirestoreWithoutDup } from "@/components/Groups/groupHandlingFunctions";
+import { addMessageToFirestore } from "@/components/Messages/functions";
+import { addGroupToFirestoreWithoutDup } from "@/components/Groups/functions";
 import { Groups } from "@/components/Groups";
 import { useCurrentGroup } from "@/components/Groups/useCurrentGroup";
 

@@ -2,18 +2,18 @@ import { useAuthUserContext } from "@/firebase/auth/AuthUserContext";
 import useAuthUser from "@/firebase/auth/useAuthUser";
 import { SyntheticEvent, useEffect } from "react";
 import { Message } from "../Messages/Message";
-import { FirestoreGroupType } from "./FirestoreGroupType";
 import styles from "./Groups.module.css";
+import { GroupType } from "./GroupType";
 
-export function Groups(props: { groups: FirestoreGroupType[], groupsLoading: boolean, 
-currentGroup: FirestoreGroupType | null, onCurrentGroupChange?: (
-  oldGroup: FirestoreGroupType | null, 
-  newGroup: FirestoreGroupType,
+export function Groups(props: { groups: GroupType[], groupsLoading: boolean, 
+currentGroup: GroupType | null, onCurrentGroupChange?: (
+  oldGroup: GroupType | null, 
+  newGroup: GroupType,
   event?: SyntheticEvent, 
 ) => void }) {
   const { authUser, authUserLoading } = useAuthUserContext();
 
-  function isSameGroups(group1: FirestoreGroupType | null, group2: FirestoreGroupType | null) {
+  function isSameGroups(group1: GroupType | null, group2: GroupType | null) {
     return group1 && group2 && group1.userIds.join(",") == group2.userIds.join(",");
   };
 
@@ -22,6 +22,7 @@ currentGroup: FirestoreGroupType | null, onCurrentGroupChange?: (
     if (!currentGroup && groups.length > 0 && !isSameGroups(groups[0], currentGroup))
       onCurrentGroupChange?.(null, groups[0]);
   }, [groups, currentGroup, onCurrentGroupChange]);
+  // console.log(groups[0]);
 
   return (
     <>
@@ -31,14 +32,19 @@ currentGroup: FirestoreGroupType | null, onCurrentGroupChange?: (
         : ""
       } */}
       <ul>
-        { props.groups.map(group =>  
+        { props.groups.map(group =>
           <li key={group.id} 
             className={ isSameGroups(props.currentGroup, group) ? styles.group__active : ""}
             onClick={event => !isSameGroups(props.currentGroup, group) && 
               props.onCurrentGroupChange?.(props.currentGroup, group, event)
             }
           >
-            <p>{group.userIds.find((userId) => userId != authUser?.uid)}</p>
+            {/* <p>{group.userIds.find((userId) => userId != authUser?.uid)}</p> */}
+            <p>{group.nickname}</p>
+            <p>
+              {/* {group.messages ? group.messages[0]?.from : ""}: {" "}
+              {group.messages ? group.messages[0]?.message: ""} */}
+            </p>
             <Message group={group} />
           </li>
         )}

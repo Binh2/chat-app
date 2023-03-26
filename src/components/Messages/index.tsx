@@ -4,7 +4,7 @@ import { useAuthUserContext } from "@/firebase/auth/AuthUserContext";
 
 export function Messages(props: { messages: MessageType[], messagesLoading: boolean}) {
   const { authUser } = useAuthUserContext();
-  console.log(props.messages.map(message => message.from));
+  
   return (
     <>
       { props.messagesLoading || !authUser ? "Loading..." : 

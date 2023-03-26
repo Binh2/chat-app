@@ -1,16 +1,18 @@
 import { useAuthUserContext } from "@/firebase/auth/AuthUserContext";
-import { FirestoreGroupType } from "../Groups/FirestoreGroupType";
+import { GroupType } from "../Groups/GroupType";
 import { useMessages } from "./useMessages";
 
-export function Message(props: {group: FirestoreGroupType | null}) {
+export function Message(props: {group: GroupType | null}) {
   const { messages, messagesLoading, setMessagesLoading } = useMessages(props.group, 1);
   const { authUser } = useAuthUserContext();
-  if (messages.length < 1) return;
+  if (messages.length < 1) return <></>;
   const message = messages[0];
-
+  const fromUsers = props.group?.users.filter(user => user.id == message.from);
+  if (!fromUsers || fromUsers.length < 1) return <></>;
+  const fromUser = fromUsers[0];
   return (
     <>
-      <div>{message.from}: {message.message}</div>
+      <div>{fromUser.displayName}: {message.message}</div>
     </>
   )
 }

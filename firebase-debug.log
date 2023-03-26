@@ -1,41 +1,650 @@
-[debug] [2023-03-14T01:24:43.826Z] ----------------------------------------------------------------------
-[debug] [2023-03-14T01:24:43.841Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
-[debug] [2023-03-14T01:24:43.845Z] CLI Version:   11.23.1
-[debug] [2023-03-14T01:24:43.846Z] Platform:      win32
-[debug] [2023-03-14T01:24:43.848Z] Node Version:  v16.13.2
-[debug] [2023-03-14T01:24:43.861Z] Time:          Tue Mar 14 2023 08:24:43 GMT+0700 (Indochina Time)
-[debug] [2023-03-14T01:24:43.862Z] ----------------------------------------------------------------------
+[debug] [2023-03-15T07:46:15.587Z] ----------------------------------------------------------------------
+[debug] [2023-03-15T07:46:15.592Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
+[debug] [2023-03-15T07:46:15.593Z] CLI Version:   11.23.1
+[debug] [2023-03-15T07:46:15.593Z] Platform:      win32
+[debug] [2023-03-15T07:46:15.594Z] Node Version:  v16.13.2
+[debug] [2023-03-15T07:46:15.605Z] Time:          Wed Mar 15 2023 14:46:15 GMT+0700 (Indochina Time)
+[debug] [2023-03-15T07:46:15.606Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2023-03-14T01:24:44.764Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2023-03-14T01:24:44.767Z] > authorizing via signed-in user (hgqbinh2002@gmail.com)
-[debug] [2023-03-14T01:24:45.609Z] java version "19.0.2" 2023-01-17
+[debug] [2023-03-15T07:46:15.615Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-03-15T07:46:15.938Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-03-15T07:46:15.939Z] > authorizing via signed-in user (hgqbinh2002@gmail.com)
+[debug] [2023-03-15T07:46:17.336Z] java version "19.0.2" 2023-01-17
 
-[debug] [2023-03-14T01:24:45.612Z] Java(TM) SE Runtime Environment (build 19.0.2+7-44)
+[debug] [2023-03-15T07:46:17.340Z] Java(TM) SE Runtime Environment (build 19.0.2+7-44)
 Java HotSpot(TM) 64-Bit Server VM (build 19.0.2+7-44, mixed mode, sharing)
 
-[debug] [2023-03-14T01:24:45.647Z] Parsed Java major version: 19
+[debug] [2023-03-15T07:46:17.383Z] Parsed Java major version: 19
 [info] i  emulators: Starting emulators: auth, firestore, storage {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth, firestore, storage"}}
-[debug] [2023-03-14T01:24:45.764Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2023-03-14T01:24:45.765Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2023-03-14T01:24:45.766Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2023-03-14T01:24:45.766Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2023-03-14T01:24:45.767Z] [storage] Storage Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2023-03-14T01:24:45.768Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"storage":[{"address":"127.0.0.1","family":"IPv4","port":9199}]},"metadata":{"message":"assigned listening specs for emulators"}}
-[debug] [2023-03-14T01:24:45.851Z] [hub] writing locator at C:\Users\ADMIN\AppData\Local\Temp\hub-chat-app-97f7e.json
-[debug] [2023-03-14T01:24:45.958Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
-[debug] [2023-03-14T01:24:45.959Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
-[debug] [2023-03-14T01:24:45.959Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","C:\\Users\\ADMIN\\.cache\\firebase\\emulators\\cloud-firestore-emulator-v1.16.0.jar","--host","127.0.0.1","--port",8080,"--websocket_port",9150,"--project_id","chat-app-97f7e","--rules","C:\\cua-Binh\\webpages\\chat-app\\firestore.rules","--single_project_mode",true],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\ADMIN\\\\.cache\\\\firebase\\\\emulators\\\\cloud-firestore-emulator-v1.16.0.jar\",\"--host\",\"127.0.0.1\",\"--port\",8080,\"--websocket_port\",9150,\"--project_id\",\"chat-app-97f7e\",\"--rules\",\"C:\\\\cua-Binh\\\\webpages\\\\chat-app\\\\firestore.rules\",\"--single_project_mode\",true],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false}"}}
+[debug] [2023-03-15T07:46:17.494Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-15T07:46:17.495Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-15T07:46:17.495Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-15T07:46:17.497Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-15T07:46:17.498Z] [storage] Storage Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-15T07:46:17.499Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"storage":[{"address":"127.0.0.1","family":"IPv4","port":9199}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[warn] !  emulators: It seems that you are running multiple instances of the emulator suite for project chat-app-97f7e. This may result in unexpected behavior. 
+[debug] [2023-03-15T07:46:17.565Z] [hub] writing locator at C:\Users\ADMIN\AppData\Local\Temp\hub-chat-app-97f7e.json
+[debug] [2023-03-15T07:46:17.597Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-03-15T07:46:17.598Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2023-03-15T07:46:17.707Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-03-15T07:46:17.708Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
+[debug] [2023-03-15T07:46:17.709Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","C:\\Users\\ADMIN\\.cache\\firebase\\emulators\\cloud-firestore-emulator-v1.16.0.jar","--host","127.0.0.1","--port",8080,"--websocket_port",9150,"--project_id","chat-app-97f7e","--rules","C:\\cua-Binh\\webpages\\chat-app\\firestore.rules","--single_project_mode",true],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\ADMIN\\\\.cache\\\\firebase\\\\emulators\\\\cloud-firestore-emulator-v1.16.0.jar\",\"--host\",\"127.0.0.1\",\"--port\",8080,\"--websocket_port\",9150,\"--project_id\",\"chat-app-97f7e\",\"--rules\",\"C:\\\\cua-Binh\\\\webpages\\\\chat-app\\\\firestore.rules\",\"--single_project_mode\",true],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false}"}}
 [info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
 [info] +  firestore: Firestore Emulator UI websocket is running on 9150. {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator UI websocket is running on 9150."}}
-[debug] [2023-03-14T01:25:23.264Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"storage"},"message":"Ignoring unsupported arg: port"}}
-[debug] [2023-03-14T01:25:27.126Z] Temp file directory for storage emulator: C:\Users\ADMIN\AppData\Local\Temp/firebase/storage/blobs {"metadata":{"emulator":{"name":"storage"},"message":"Temp file directory for storage emulator: C:\\Users\\ADMIN\\AppData\\Local\\Temp/firebase/storage/blobs"}}
-[debug] [2023-03-14T01:25:27.190Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
-[debug] [2023-03-14T01:25:27.190Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
-[debug] [2023-03-14T01:25:27.191Z] Starting Emulator UI with command {"binary":"node","args":["C:\\Users\\ADMIN\\.cache\\firebase\\emulators\\ui-v1.11.4\\server\\server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"C:\\\\Users\\\\ADMIN\\\\.cache\\\\firebase\\\\emulators\\\\ui-v1.11.4\\\\server\\\\server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[debug] [2023-03-15T07:47:15.752Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"storage"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2023-03-15T07:47:19.556Z] Temp file directory for storage emulator: C:\Users\ADMIN\AppData\Local\Temp/firebase/storage/blobs {"metadata":{"emulator":{"name":"storage"},"message":"Temp file directory for storage emulator: C:\\Users\\ADMIN\\AppData\\Local\\Temp/firebase/storage/blobs"}}
+[debug] [2023-03-15T07:47:19.603Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-03-15T07:47:19.604Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2023-03-15T07:47:19.604Z] Starting Emulator UI with command {"binary":"node","args":["C:\\Users\\ADMIN\\.cache\\firebase\\emulators\\ui-v1.11.4\\server\\server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"C:\\\\Users\\\\ADMIN\\\\.cache\\\\firebase\\\\emulators\\\\ui-v1.11.4\\\\server\\\\server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
 [info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
-[debug] [2023-03-14T01:25:28.038Z] Web / API server started at 127.0.0.1:4000
-Web / API server started at ::1:4000
- {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\nWeb / API server started at ::1:4000\n"}}
+[debug] [2023-03-15T07:47:20.228Z] Web / API server started at 127.0.0.1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\n"}}
+[debug] [2023-03-15T07:47:20.229Z] Web / API server started at ::1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4000\n"}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────────┬────────────────┬─────────────────────────────────┐
+│ Emulator       │ Host:Port      │ View in Emulator UI             │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Authentication │ 127.0.0.1:9099 │ http://127.0.0.1:4000/auth      │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Firestore      │ 127.0.0.1:8080 │ http://127.0.0.1:4000/firestore │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Storage        │ 127.0.0.1:9199 │ http://127.0.0.1:4000/storage   │
+└────────────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500, 9150
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[error] 
+[error] Error: Storage Emulator Rules runtime exited unexpectedly.
+[debug] [2023-03-15T08:07:34.162Z] Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:795:11)
+    at WriteStream.Socket._write (node:net:807:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston\lib\winston\transports\console.js:79:23)
+    at Console._write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:409:139)
+    at writeOrBuffer (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:398:5)
+    at Console.Writable.write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:307:11)
+    at DerivedLogger.ondata (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:402:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-03-15T08:07:34.169Z] Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:795:11)
+    at WriteStream.Socket._write (node:net:807:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston\lib\winston\transports\console.js:79:23)
+    at Console._write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:409:139)
+    at writeOrBuffer (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:398:5)
+    at Console.Writable.write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:307:11)
+    at DerivedLogger.ondata (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:402:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-03-15T08:07:34.180Z] Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:795:11)
+    at WriteStream.Socket._write (node:net:807:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston\lib\winston\transports\console.js:79:23)
+    at Console._write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:409:139)
+    at writeOrBuffer (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:398:5)
+    at Console.Writable.write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:307:11)
+    at DerivedLogger.ondata (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:402:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-03-15T08:07:34.187Z] Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:795:11)
+    at WriteStream.Socket._write (node:net:807:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston\lib\winston\transports\console.js:79:23)
+    at Console._write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:409:139)
+    at writeOrBuffer (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:398:5)
+    at Console.Writable.write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:307:11)
+    at DerivedLogger.ondata (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:402:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-03-15T08:07:34.204Z] Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:795:11)
+    at WriteStream.Socket._write (node:net:807:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston\lib\winston\transports\console.js:79:23)
+    at Console._write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:409:139)
+    at writeOrBuffer (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:398:5)
+    at Console.Writable.write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:307:11)
+    at DerivedLogger.ondata (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:402:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-03-15T08:07:34.210Z] Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:795:11)
+    at WriteStream.Socket._write (node:net:807:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston\lib\winston\transports\console.js:79:23)
+    at Console._write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:409:139)
+    at writeOrBuffer (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:398:5)
+    at Console.Writable.write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:307:11)
+    at DerivedLogger.ondata (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:402:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-03-15T08:07:34.222Z] Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:795:11)
+    at WriteStream.Socket._write (node:net:807:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston\lib\winston\transports\console.js:79:23)
+    at Console._write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:409:139)
+    at writeOrBuffer (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:398:5)
+    at Console.Writable.write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:307:11)
+    at DerivedLogger.ondata (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:402:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-03-15T08:07:34.231Z] Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:795:11)
+    at WriteStream.Socket._write (node:net:807:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston\lib\winston\transports\console.js:79:23)
+    at Console._write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:409:139)
+    at writeOrBuffer (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:398:5)
+    at Console.Writable.write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:307:11)
+    at DerivedLogger.ondata (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:402:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-03-15T08:07:34.256Z] Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:795:11)
+    at WriteStream.Socket._write (node:net:807:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston\lib\winston\transports\console.js:79:23)
+    at Console._write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:409:139)
+    at writeOrBuffer (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:398:5)
+    at Console.Writable.write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:307:11)
+    at DerivedLogger.ondata (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:402:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-03-15T08:07:34.269Z] Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:795:11)
+    at WriteStream.Socket._write (node:net:807:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston\lib\winston\transports\console.js:79:23)
+    at Console._write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:409:139)
+    at writeOrBuffer (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:398:5)
+    at Console.Writable.write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:307:11)
+    at DerivedLogger.ondata (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:402:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-03-15T08:07:34.276Z] Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:795:11)
+    at WriteStream.Socket._write (node:net:807:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston\lib\winston\transports\console.js:79:23)
+    at Console._write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:409:139)
+    at writeOrBuffer (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:398:5)
+    at Console.Writable.write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:307:11)
+    at DerivedLogger.ondata (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:402:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+[debug] [2023-03-20T08:56:51.486Z] ----------------------------------------------------------------------
+[debug] [2023-03-20T08:56:51.495Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
+[debug] [2023-03-20T08:56:51.497Z] CLI Version:   11.23.1
+[debug] [2023-03-20T08:56:51.498Z] Platform:      win32
+[debug] [2023-03-20T08:56:51.498Z] Node Version:  v16.13.2
+[debug] [2023-03-20T08:56:51.511Z] Time:          Mon Mar 20 2023 15:56:51 GMT+0700 (Indochina Time)
+[debug] [2023-03-20T08:56:51.512Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-03-20T08:56:51.528Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-03-20T08:56:52.098Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-03-20T08:56:52.099Z] > authorizing via signed-in user (hgqbinh2002@gmail.com)
+[debug] [2023-03-20T08:56:52.824Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-03-20T08:56:52.825Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2023-03-20T08:56:53.195Z] java version "19.0.2" 2023-01-17
+
+[debug] [2023-03-20T08:56:53.197Z] Java(TM) SE Runtime Environment (build 19.0.2+7-44)
+Java HotSpot(TM) 64-Bit Server VM (build 19.0.2+7-44, mixed mode, sharing)
+
+[debug] [2023-03-20T08:56:53.278Z] Parsed Java major version: 19
+[info] i  emulators: Starting emulators: auth, firestore, storage {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth, firestore, storage"}}
+[debug] [2023-03-20T08:56:53.366Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-20T08:56:53.366Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-20T08:56:53.367Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-20T08:56:53.367Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-20T08:56:53.367Z] [storage] Storage Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-20T08:56:53.392Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"storage":[{"address":"127.0.0.1","family":"IPv4","port":9199}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[warn] !  emulators: It seems that you are running multiple instances of the emulator suite for project chat-app-97f7e. This may result in unexpected behavior. 
+[debug] [2023-03-20T08:56:53.464Z] [hub] writing locator at C:\Users\ADMIN\AppData\Local\Temp\hub-chat-app-97f7e.json
+[debug] [2023-03-20T08:56:53.530Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-03-20T08:56:53.531Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
+[debug] [2023-03-20T08:56:53.531Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","C:\\Users\\ADMIN\\.cache\\firebase\\emulators\\cloud-firestore-emulator-v1.16.0.jar","--host","127.0.0.1","--port",8080,"--websocket_port",9150,"--project_id","chat-app-97f7e","--rules","C:\\cua-Binh\\webpages\\chat-app\\firestore.rules","--single_project_mode",true],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\ADMIN\\\\.cache\\\\firebase\\\\emulators\\\\cloud-firestore-emulator-v1.16.0.jar\",\"--host\",\"127.0.0.1\",\"--port\",8080,\"--websocket_port\",9150,\"--project_id\",\"chat-app-97f7e\",\"--rules\",\"C:\\\\cua-Binh\\\\webpages\\\\chat-app\\\\firestore.rules\",\"--single_project_mode\",true],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false}"}}
+[info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
+[info] +  firestore: Firestore Emulator UI websocket is running on 9150. {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator UI websocket is running on 9150."}}
+[debug] [2023-03-20T08:57:50.895Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"storage"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2023-03-20T08:57:57.250Z] Temp file directory for storage emulator: C:\Users\ADMIN\AppData\Local\Temp/firebase/storage/blobs {"metadata":{"emulator":{"name":"storage"},"message":"Temp file directory for storage emulator: C:\\Users\\ADMIN\\AppData\\Local\\Temp/firebase/storage/blobs"}}
+[debug] [2023-03-20T08:57:57.308Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-03-20T08:57:57.309Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2023-03-20T08:57:57.310Z] Starting Emulator UI with command {"binary":"node","args":["C:\\Users\\ADMIN\\.cache\\firebase\\emulators\\ui-v1.11.4\\server\\server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"C:\\\\Users\\\\ADMIN\\\\.cache\\\\firebase\\\\emulators\\\\ui-v1.11.4\\\\server\\\\server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2023-03-20T08:57:58.019Z] Web / API server started at 127.0.0.1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\n"}}
+[debug] [2023-03-20T08:57:58.020Z] Web / API server started at ::1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4000\n"}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────────┬────────────────┬─────────────────────────────────┐
+│ Emulator       │ Host:Port      │ View in Emulator UI             │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Authentication │ 127.0.0.1:9099 │ http://127.0.0.1:4000/auth      │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Firestore      │ 127.0.0.1:8080 │ http://127.0.0.1:4000/firestore │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Storage        │ 127.0.0.1:9199 │ http://127.0.0.1:4000/storage   │
+└────────────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500, 9150
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2023-03-21T02:11:05.174Z] ----------------------------------------------------------------------
+[debug] [2023-03-21T02:11:05.185Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
+[debug] [2023-03-21T02:11:05.187Z] CLI Version:   11.23.1
+[debug] [2023-03-21T02:11:05.188Z] Platform:      win32
+[debug] [2023-03-21T02:11:05.189Z] Node Version:  v16.13.2
+[debug] [2023-03-21T02:11:05.194Z] Time:          Tue Mar 21 2023 09:11:05 GMT+0700 (Indochina Time)
+[debug] [2023-03-21T02:11:05.195Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-03-21T02:11:05.817Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-03-21T02:11:05.820Z] > authorizing via signed-in user (hgqbinh2002@gmail.com)
+[debug] [2023-03-21T02:11:07.111Z] java version "19.0.2" 2023-01-17
+
+[debug] [2023-03-21T02:11:07.114Z] Java(TM) SE Runtime Environment (build 19.0.2+7-44)
+Java HotSpot(TM) 64-Bit Server VM (build 19.0.2+7-44, mixed mode, sharing)
+
+[debug] [2023-03-21T02:11:07.171Z] Parsed Java major version: 19
+[info] i  emulators: Starting emulators: auth, firestore, storage {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth, firestore, storage"}}
+[debug] [2023-03-21T02:11:07.257Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-21T02:11:07.259Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-21T02:11:07.259Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-21T02:11:07.259Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-21T02:11:07.260Z] [storage] Storage Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-21T02:11:07.261Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"storage":[{"address":"127.0.0.1","family":"IPv4","port":9199}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[warn] !  emulators: It seems that you are running multiple instances of the emulator suite for project chat-app-97f7e. This may result in unexpected behavior. 
+[debug] [2023-03-21T02:11:07.303Z] [hub] writing locator at C:\Users\ADMIN\AppData\Local\Temp\hub-chat-app-97f7e.json
+[debug] [2023-03-21T02:11:07.388Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-03-21T02:11:07.389Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
+[debug] [2023-03-21T02:11:07.389Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","C:\\Users\\ADMIN\\.cache\\firebase\\emulators\\cloud-firestore-emulator-v1.16.0.jar","--host","127.0.0.1","--port",8080,"--websocket_port",9150,"--project_id","chat-app-97f7e","--rules","C:\\cua-Binh\\webpages\\chat-app\\firestore.rules","--single_project_mode",true],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\ADMIN\\\\.cache\\\\firebase\\\\emulators\\\\cloud-firestore-emulator-v1.16.0.jar\",\"--host\",\"127.0.0.1\",\"--port\",8080,\"--websocket_port\",9150,\"--project_id\",\"chat-app-97f7e\",\"--rules\",\"C:\\\\cua-Binh\\\\webpages\\\\chat-app\\\\firestore.rules\",\"--single_project_mode\",true],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false}"}}
+[info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
+[info] +  firestore: Firestore Emulator UI websocket is running on 9150. {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator UI websocket is running on 9150."}}
+[debug] [2023-03-21T02:11:54.787Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"storage"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2023-03-21T02:12:00.821Z] Temp file directory for storage emulator: C:\Users\ADMIN\AppData\Local\Temp/firebase/storage/blobs {"metadata":{"emulator":{"name":"storage"},"message":"Temp file directory for storage emulator: C:\\Users\\ADMIN\\AppData\\Local\\Temp/firebase/storage/blobs"}}
+[debug] [2023-03-21T02:12:00.880Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-03-21T02:12:00.882Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2023-03-21T02:12:00.882Z] Starting Emulator UI with command {"binary":"node","args":["C:\\Users\\ADMIN\\.cache\\firebase\\emulators\\ui-v1.11.4\\server\\server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"C:\\\\Users\\\\ADMIN\\\\.cache\\\\firebase\\\\emulators\\\\ui-v1.11.4\\\\server\\\\server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2023-03-21T02:12:01.835Z] Web / API server started at 127.0.0.1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\n"}}
+[debug] [2023-03-21T02:12:01.837Z] Web / API server started at ::1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4000\n"}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────────┬────────────────┬─────────────────────────────────┐
+│ Emulator       │ Host:Port      │ View in Emulator UI             │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Authentication │ 127.0.0.1:9099 │ http://127.0.0.1:4000/auth      │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Firestore      │ 127.0.0.1:8080 │ http://127.0.0.1:4000/firestore │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Storage        │ 127.0.0.1:9199 │ http://127.0.0.1:4000/storage   │
+└────────────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500, 9150
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[error] 
+[error] Error: Storage Emulator Rules runtime exited unexpectedly.
+[debug] [2023-03-21T03:47:21.416Z] Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:795:11)
+    at WriteStream.Socket._write (node:net:807:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston\lib\winston\transports\console.js:79:23)
+    at Console._write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:409:139)
+    at writeOrBuffer (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:398:5)
+    at Console.Writable.write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:307:11)
+    at DerivedLogger.ondata (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:402:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-03-21T03:47:21.423Z] Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:795:11)
+    at WriteStream.Socket._write (node:net:807:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston\lib\winston\transports\console.js:79:23)
+    at Console._write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:409:139)
+    at writeOrBuffer (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:398:5)
+    at Console.Writable.write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:307:11)
+    at DerivedLogger.ondata (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:402:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-03-21T03:47:21.434Z] Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:795:11)
+    at WriteStream.Socket._write (node:net:807:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston\lib\winston\transports\console.js:79:23)
+    at Console._write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:409:139)
+    at writeOrBuffer (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:398:5)
+    at Console.Writable.write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:307:11)
+    at DerivedLogger.ondata (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:402:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-03-21T03:47:21.439Z] Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:795:11)
+    at WriteStream.Socket._write (node:net:807:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston\lib\winston\transports\console.js:79:23)
+    at Console._write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:409:139)
+    at writeOrBuffer (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:398:5)
+    at Console.Writable.write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:307:11)
+    at DerivedLogger.ondata (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:402:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-03-21T03:47:21.446Z] Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:795:11)
+    at WriteStream.Socket._write (node:net:807:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston\lib\winston\transports\console.js:79:23)
+    at Console._write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:409:139)
+    at writeOrBuffer (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:398:5)
+    at Console.Writable.write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:307:11)
+    at DerivedLogger.ondata (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:402:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-03-21T03:47:21.456Z] Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:795:11)
+    at WriteStream.Socket._write (node:net:807:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston\lib\winston\transports\console.js:79:23)
+    at Console._write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:409:139)
+    at writeOrBuffer (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:398:5)
+    at Console.Writable.write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:307:11)
+    at DerivedLogger.ondata (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:402:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-03-21T03:47:21.459Z] Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:795:11)
+    at WriteStream.Socket._write (node:net:807:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston\lib\winston\transports\console.js:79:23)
+    at Console._write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:409:139)
+    at writeOrBuffer (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:398:5)
+    at Console.Writable.write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:307:11)
+    at DerivedLogger.ondata (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:402:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-03-21T03:47:21.464Z] Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:795:11)
+    at WriteStream.Socket._write (node:net:807:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston\lib\winston\transports\console.js:79:23)
+    at Console._write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:409:139)
+    at writeOrBuffer (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:398:5)
+    at Console.Writable.write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:307:11)
+    at DerivedLogger.ondata (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:402:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-03-21T03:47:21.468Z] Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:795:11)
+    at WriteStream.Socket._write (node:net:807:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston\lib\winston\transports\console.js:79:23)
+    at Console._write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:409:139)
+    at writeOrBuffer (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:398:5)
+    at Console.Writable.write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:307:11)
+    at DerivedLogger.ondata (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:402:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-03-21T03:47:21.477Z] Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:795:11)
+    at WriteStream.Socket._write (node:net:807:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston\lib\winston\transports\console.js:79:23)
+    at Console._write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:409:139)
+    at writeOrBuffer (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:398:5)
+    at Console.Writable.write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:307:11)
+    at DerivedLogger.ondata (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:402:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-03-21T03:47:21.481Z] Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:795:11)
+    at WriteStream.Socket._write (node:net:807:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston\lib\winston\transports\console.js:79:23)
+    at Console._write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\winston-transport\index.js:103:17)
+    at doWrite (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:409:139)
+    at writeOrBuffer (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:398:5)
+    at Console.Writable.write (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_writable.js:307:11)
+    at DerivedLogger.ondata (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:402:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+[debug] [2023-03-25T23:47:45.128Z] ----------------------------------------------------------------------
+[debug] [2023-03-25T23:47:45.133Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ADMIN\AppData\Local\Yarn\Data\global\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
+[debug] [2023-03-25T23:47:45.134Z] CLI Version:   11.23.1
+[debug] [2023-03-25T23:47:45.135Z] Platform:      win32
+[debug] [2023-03-25T23:47:45.135Z] Node Version:  v16.13.2
+[debug] [2023-03-25T23:47:45.147Z] Time:          Sun Mar 26 2023 06:47:45 GMT+0700 (Indochina Time)
+[debug] [2023-03-25T23:47:45.147Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-03-25T23:47:45.157Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-03-25T23:47:45.455Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-03-25T23:47:45.456Z] > authorizing via signed-in user (hgqbinh2002@gmail.com)
+[debug] [2023-03-25T23:47:46.142Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-03-25T23:47:46.143Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2023-03-25T23:47:46.505Z] java version "19.0.2" 2023-01-17
+
+[debug] [2023-03-25T23:47:46.507Z] Java(TM) SE Runtime Environment (build 19.0.2+7-44)
+Java HotSpot(TM) 64-Bit Server VM (build 19.0.2+7-44, mixed mode, sharing)
+
+[debug] [2023-03-25T23:47:46.633Z] Parsed Java major version: 19
+[info] i  emulators: Starting emulators: auth, firestore, storage {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth, firestore, storage"}}
+[debug] [2023-03-25T23:47:46.747Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-25T23:47:46.748Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-25T23:47:46.749Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-25T23:47:46.750Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-25T23:47:46.750Z] [storage] Storage Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-25T23:47:46.753Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"storage":[{"address":"127.0.0.1","family":"IPv4","port":9199}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[warn] !  emulators: It seems that you are running multiple instances of the emulator suite for project chat-app-97f7e. This may result in unexpected behavior. 
+[debug] [2023-03-25T23:47:46.795Z] [hub] writing locator at C:\Users\ADMIN\AppData\Local\Temp\hub-chat-app-97f7e.json
+[debug] [2023-03-25T23:47:46.874Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-03-25T23:47:46.875Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
+[debug] [2023-03-25T23:47:46.875Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","C:\\Users\\ADMIN\\.cache\\firebase\\emulators\\cloud-firestore-emulator-v1.16.0.jar","--host","127.0.0.1","--port",8080,"--websocket_port",9150,"--project_id","chat-app-97f7e","--rules","C:\\cua-Binh\\webpages\\chat-app\\firestore.rules","--single_project_mode",true],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\ADMIN\\\\.cache\\\\firebase\\\\emulators\\\\cloud-firestore-emulator-v1.16.0.jar\",\"--host\",\"127.0.0.1\",\"--port\",8080,\"--websocket_port\",9150,\"--project_id\",\"chat-app-97f7e\",\"--rules\",\"C:\\\\cua-Binh\\\\webpages\\\\chat-app\\\\firestore.rules\",\"--single_project_mode\",true],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false}"}}
+[info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
+[info] +  firestore: Firestore Emulator UI websocket is running on 9150. {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator UI websocket is running on 9150."}}
+[debug] [2023-03-25T23:48:41.949Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"storage"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2023-03-25T23:48:47.658Z] Temp file directory for storage emulator: C:\Users\ADMIN\AppData\Local\Temp/firebase/storage/blobs {"metadata":{"emulator":{"name":"storage"},"message":"Temp file directory for storage emulator: C:\\Users\\ADMIN\\AppData\\Local\\Temp/firebase/storage/blobs"}}
+[debug] [2023-03-25T23:48:47.797Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-03-25T23:48:47.798Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2023-03-25T23:48:47.798Z] Starting Emulator UI with command {"binary":"node","args":["C:\\Users\\ADMIN\\.cache\\firebase\\emulators\\ui-v1.11.4\\server\\server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"C:\\\\Users\\\\ADMIN\\\\.cache\\\\firebase\\\\emulators\\\\ui-v1.11.4\\\\server\\\\server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2023-03-25T23:48:49.352Z] Web / API server started at 127.0.0.1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\n"}}
+[debug] [2023-03-25T23:48:49.356Z] Web / API server started at ::1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4000\n"}}
 [info] 
 ┌─────────────────────────────────────────────────────────────┐
 │ ✔  All emulators ready! It is now safe to connect your app. │

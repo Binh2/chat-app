@@ -1,8 +1,8 @@
 import { useState } from "react"
-import { FirestoreGroupType } from "./FirestoreGroupType"
+import { GroupType } from "./GroupType"
 
 export function useCurrentGroup() {
-  const [currentGroup, setCurrentGroup] = useState<FirestoreGroupType | null>(null)
+  const [currentGroup, setCurrentGroup] = useState<GroupType | null>(null)
 
   return {
     currentGroup,
