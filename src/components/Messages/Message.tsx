@@ -2,7 +2,7 @@ import { useAuthUserContext } from "@/firebase/auth/AuthUserContext";
 import { GroupType } from "../Groups/GroupType";
 import { useMessages } from "./useMessages";
 
-export function Message(props: {group: GroupType | null}) {
+export function Message(props: {group: GroupType | null, className?: string}) {
   const { messages, messagesLoading, setMessagesLoading } = useMessages(props.group, 1);
   const { authUser } = useAuthUserContext();
   if (messages.length < 1) return <></>;
@@ -12,7 +12,7 @@ export function Message(props: {group: GroupType | null}) {
   const fromUser = fromUsers[0];
   return (
     <>
-      <div>{fromUser.displayName}: {message.message}</div>
+      <div className={`${props.className ?? ""}`}>{fromUser.displayName}: {message.message}</div>
     </>
   )
 }

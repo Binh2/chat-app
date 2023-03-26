@@ -6,6 +6,7 @@
   --color-black: hsl(0, 0%, 0%);
   --color-white: hsl(0, 0%, 100%);
   --color-light-gray: hsl(0, 0%, 75%);
+  --highlight-color-black: hsl(60, 41%, 10%);
 
   --gradient-primary: linear-gradient(
     to bottom,

@@ -1,0 +1,41 @@
+.group {
+  display: grid;
+  grid-template-areas: 
+    "photo nickname"
+    "photo message";
+  grid-template-columns: auto 1fr;
+}
+.group_photos {
+  grid-area: photo;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0px;
+}
+.group_photo {
+  background: white;
+  border-radius: 50%;
+}
+$translate-photo: 20%;
+.group_photo0 {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  transform: translate($translate-photo, $translate-photo);
+}
+.group_photo1 {
+  grid-row: 2 / 3;
+  grid-column: 2 / 3;
+  transform: translate(-$translate-photo, -$translate-photo);
+}
+.group_nickname {
+  grid-area: nickname;
+  text-overflow: ellipsis;
+}
+.group_message {
+  grid-area: message;
+  text-overflow: ellipsis;
+}
+
+.group__active {
+  background: var(--color-light-gray);
+}

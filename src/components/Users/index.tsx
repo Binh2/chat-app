@@ -15,11 +15,7 @@ onClickOnUser?: (event?: SyntheticEvent, user?: UserType) => void | undefined}) 
         {props.users.map((user, index) => (<li key={index} className={styles.user} 
           onClick={event => props.onClickOnUser?.(event, user)}>
           <div className={styles.user_uid}>{user.id}</div>
-          {
-            user.photoUrl ? 
-            <Image src={ user.photoUrl } alt="Profile pic" className={styles.user_pic}></Image> :
-            <Image src={ placeholderImage } alt="Profile pic" className={styles.user_pic}></Image>
-          }
+          <Image src={ user.photoUrl ? user.photoUrl : placeholderImage } alt="Profile pic" className={styles.user_pic}></Image> :
           
           <div className={styles.user_name}>{user.displayName}</div>
         </li>))}

@@ -32,6 +32,10 @@ $triangle-height: 0.4em;
   display: inline-block;
   position: relative;
   margin: $triangle-width;
+  overflow-wrap: anywhere;
+}
+.message::selection {
+  background: var(--highlight-color-black);
 }
 
 $border-radius: 0.5em;
@@ -44,6 +48,7 @@ $border-radius: 0.5em;
 
 .name {
   font-size: 0.75em;
+  // max-width: $max-width;
 }
 .date {
   font-size: 0.5em;
@@ -60,7 +65,8 @@ $border-radius: 0.5em;
 .rightMessageContainer .message {
   float: right;
 }
-
+$max-width: 80%;
 .messageContainer {
   margin: 0.5em 0.1em;
+  max-width: $max-width;
 }

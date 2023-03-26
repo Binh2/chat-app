@@ -46,7 +46,7 @@ export default function Chat() {
       <Head>
       </Head>
       <main className={styles.main}>
-        <div className={styles.contacts}>
+        <div className={`${styles.contacts} scrollY`}>
           <Link href="/">
             <Image src={logoImage} alt="App logo" className={styles.logoImage} priority={true} />
           </Link>
@@ -79,7 +79,7 @@ export default function Chat() {
         <div className={styles.contact__header}>
           <p>{ authUserLoading ? <p>Loading...</p> : <p>{authUser?.displayName ?? "null"}</p>}</p>
         </div>
-        <Messages messages={messages} messagesLoading={messagesLoading}></Messages>
+        <Messages group={currentGroup} messages={messages} messagesLoading={messagesLoading}></Messages>
         <form className={styles.messageBox} onSubmit={sendMessage}>
           <input className={styles.messageBox_input} type="text" placeholder="Word your thought"
             ref={messageBox}></input>

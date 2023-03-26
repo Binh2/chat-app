@@ -1,9 +1,10 @@
 import { useAuthUserContext } from "@/firebase/auth/AuthUserContext";
-import useAuthUser from "@/firebase/auth/useAuthUser";
 import { SyntheticEvent, useEffect } from "react";
 import { Message } from "../Messages/Message";
-import styles from "./Groups.module.css";
+import styles from "./Groups.module.scss";
 import { GroupType } from "./GroupType";
+import placeholderImage from "/public/profile-pic-placeholder.svg";
+import Image from "next/image";
 
 export function Groups(props: { groups: GroupType[], groupsLoading: boolean, 
 currentGroup: GroupType | null, onCurrentGroupChange?: (
@@ -22,30 +23,24 @@ currentGroup: GroupType | null, onCurrentGroupChange?: (
     if (!currentGroup && groups.length > 0 && !isSameGroups(groups[0], currentGroup))
       onCurrentGroupChange?.(null, groups[0]);
   }, [groups, currentGroup, onCurrentGroupChange]);
-  // console.log(groups[0]);
 
   return (
     <>
-      {/* { user != null ?
-        <Users firestoreUsers={props.groups.map((group) => group.users
-          .find((firestoreUser: UserType) => firestoreUser.uid != user.uid))} firestoreUsersLoading={true}></Users>
-        : ""
-      } */}
       <ul>
         { props.groups.map(group =>
           <li key={group.id} 
-            className={ isSameGroups(props.currentGroup, group) ? styles.group__active : ""}
+            className={ `${isSameGroups(props.currentGroup, group) ? styles.group__active : ""} ${styles.group}`}
             onClick={event => !isSameGroups(props.currentGroup, group) && 
               props.onCurrentGroupChange?.(props.currentGroup, group, event)
             }
           >
-            {/* <p>{group.userIds.find((userId) => userId != authUser?.uid)}</p> */}
-            <p>{group.nickname}</p>
-            <p>
-              {/* {group.messages ? group.messages[0]?.from : ""}: {" "}
-              {group.messages ? group.messages[0]?.message: ""} */}
-            </p>
-            <Message group={group} />
+            <div className={styles.group_photos}>
+              {group.users.map((user, index) => (
+                <Image key={index} alt="Profile pic" src={user.photoUrl ? user.photoUrl : placeholderImage} className={`${styles.group_photo} ${styles["group_photo" + index.toString()]}`} />
+              ))}
+            </div>
+            <p className={styles.group_nickname}>{group.nickname}</p>
+            <Message group={group} className={styles.group_message} />
           </li>
         )}
         { authUserLoading || props.groupsLoading ? 
